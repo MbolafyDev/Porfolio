@@ -6,40 +6,13 @@
   <title>Mon Portfolio</title>
   <!-- Bootstrap 5 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Custom CSS -->
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #f8f9fa;
-    }
-    header {
-      background: linear-gradient(135deg, #0d6efd, #6610f2);
-      color: white;
-      padding: 60px 0;
-      text-align: center;
-    }
-    .profile-img {
-      width: 150px;
-      height: 150px;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 4px solid white;
-      margin-bottom: 20px;
-    }
-    .progress {
-      height: 20px;
-    }
-    .card img {
-      height: 200px;
-      object-fit: cover;
-    }
-  </style>
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
 <!-- Header -->
 <header>
-  <img src="" alt="Photo de profil" class="profile-img">
+  <img src="img/pdp.jpg" alt="Photo de profil" class="profile-img">
   <h1>ANDRIATSIKETRAKARIVONINDRIAKA Mbola Fy</h1>
   <p>Développeur Web Fullstack | Django & Laravel</p>
 </header>
@@ -143,25 +116,6 @@
 <!-- jQuery + Bootstrap Bundle -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
-<!-- Script Progress Bar dynamique -->
-<script>
-$(document).ready(function () {
-  $(".progress-bar").each(function () {
-    var $bar = $(this);
-    var skill = $bar.data("skill");
-    $bar.animate(
-      { width: skill + "%" },
-      {
-        duration: 1500,
-        step: function (now) {
-          $bar.text(Math.round(now) + "%");
-        },
-      }
-    );
-  });
-});
-</script>
-
+<script src="script/script.js"></script>
 </body>
 </html>
