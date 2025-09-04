@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mon Portfolio</title>
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f8f9fa;
+    }
+    header {
+      background: linear-gradient(135deg, #0d6efd, #6610f2);
+      color: white;
+      padding: 60px 0;
+      text-align: center;
+    }
+    .profile-img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid white;
+      margin-bottom: 20px;
+    }
+    .progress {
+      height: 20px;
+    }
+    .card img {
+      height: 200px;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+  <img src="" alt="Photo de profil" class="profile-img">
+  <h1>ANDRIATSIKETRAKARIVONINDRIAKA Mbola Fy</h1>
+  <p>Développeur Web Fullstack | Django & Laravel</p>
+</header>
+
+<!-- Section À propos -->
+<section class="container my-5">
+  <h2 class="mb-4">À propos de moi</h2>
+  <p>
+    Passionné par le développement web et les nouvelles technologies, 
+    je crée des applications performantes et des sites modernes.
+  </p>
+</section>
+
+<!-- Section Compétences -->
+<section class="container my-5">
+  <h2 class="mb-4">Compétences</h2>
+  <div class="mb-3">
+    <label>HTML5 / CSS3</label>
+    <div class="progress">
+      <div class="progress-bar bg-primary" role="progressbar" style="width: 0%" data-skill="90">0%</div>
+    </div>
+  </div>
+  <div class="mb-3">
+    <label>JavaScript / jQuery</label>
+    <div class="progress">
+      <div class="progress-bar bg-success" role="progressbar" style="width: 0%" data-skill="80">0%</div>
+    </div>
+  </div>
+  <div class="mb-3">
+    <label>Python / Django</label>
+    <div class="progress">
+      <div class="progress-bar bg-info" role="progressbar" style="width: 0%" data-skill="85">0%</div>
+    </div>
+  </div>
+  <div class="mb-3">
+    <label>PHP / Laravel</label>
+    <div class="progress">
+      <div class="progress-bar bg-warning text-dark" role="progressbar" style="width: 0%" data-skill="75">0%</div>
+    </div>
+  </div>
+</section>
+
+<!-- Section Projets -->
+<section class="container my-5">
+  <h2 class="mb-4">Mes Projets</h2>
+  <div class="row g-4">
+    <!-- Projet 1 -->
+    <div class="col-md-4">
+      <div class="card shadow-sm">
+        <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Projet 1">
+        <div class="card-body">
+          <h5 class="card-title">Projet E-commerce</h5>
+          <p class="card-text">Une boutique en ligne avec gestion des produits, panier et paiement en ligne.</p>
+          <a href="https://github.com/username/projet-ecommerce" class="btn btn-primary btn-sm" target="_blank">Code</a>
+          <a href="https://monsite-ecommerce.com" class="btn btn-outline-secondary btn-sm" target="_blank">Démo</a>
+        </div>
+      </div>
+    </div>
+    <!-- Projet 2 -->
+    <div class="col-md-4">
+      <div class="card shadow-sm">
+        <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Projet 2">
+        <div class="card-body">
+          <h5 class="card-title">Application de Gestion</h5>
+          <p class="card-text">Une application pour gérer les étudiants, les cours et les notes en ligne.</p>
+          <a href="https://github.com/username/gestion-app" class="btn btn-primary btn-sm" target="_blank">Code</a>
+          <a href="#" class="btn btn-outline-secondary btn-sm" target="_blank">Démo</a>
+        </div>
+      </div>
+    </div>
+    <!-- Projet 3 -->
+    <div class="col-md-4">
+      <div class="card shadow-sm">
+        <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Projet 3">
+        <div class="card-body">
+          <h5 class="card-title">Portfolio Dynamique</h5>
+          <p class="card-text">Un portfolio responsive développé en Django avec système d’administration.</p>
+          <a href="https://github.com/username/portfolio-django" class="btn btn-primary btn-sm" target="_blank">Code</a>
+          <a href="#" class="btn btn-outline-secondary btn-sm" target="_blank">Démo</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section Contact -->
+<section class="container my-5">
+  <h2 class="mb-4">Contact</h2>
+  <ul class="list-unstyled">
+    <li><strong>Email:</strong> mbolafy.dev@gmail.com</li>
+    <li><strong>Téléphone:</strong> +261 34 07 726 12</li>
+    <li><strong>GitHub:</strong> <a href="https://github.com/MbolafyDev" target="_blank">MbolafyDev</a></li>
+  </ul>
+</section>
+
+<!-- Footer -->
+<footer class="text-center py-4 bg-dark text-light">
+  <p>&copy; 2025 John Doe - Tous droits réservés</p>
+</footer>
+
+<!-- jQuery + Bootstrap Bundle -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Script Progress Bar dynamique -->
+<script>
+$(document).ready(function () {
+  $(".progress-bar").each(function () {
+    var $bar = $(this);
+    var skill = $bar.data("skill");
+    $bar.animate(
+      { width: skill + "%" },
+      {
+        duration: 1500,
+        step: function (now) {
+          $bar.text(Math.round(now) + "%");
+        },
+      }
+    );
+  });
+});
+</script>
+
+</body>
+</html>
