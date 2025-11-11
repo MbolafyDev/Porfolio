@@ -3,94 +3,198 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Mon Portfolio</title>
+  <title>Portfolio - Mbola Fy</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
   <!-- Bootstrap 5 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+  <!-- CSS -->
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
 <!-- Header -->
-<header>
-  <img src="img/pdp.jpg" alt="Photo de profil" class="profile-img">
-  <h1>ANDRIATSIKETRAKARIVONINDRIAKA Mbola Fy</h1>
-  <p>Développeur Web Fullstack | Django & Laravel</p>
+<header class="text-center py-5">
+  <div class="container">
+    <img src="img/pdp.jpg" alt="Photo de profil" class="profile-img shadow-lg">
+    <h1 class="fw-bold mt-3">ANDRIATSIKETRAKARIVONINDRIAKA Mbola Fy</h1>
+    <p class="lead text-light">Développeur Web Fullstack | Django & Laravel</p>
+    <a href="#contact" class="btn btn-custom mt-3">Me Contacter</a>
+  </div>
 </header>
 
-<!-- Section À propos -->
-<section class="container my-5">
-  <h2 class="mb-4">À propos de moi</h2>
-  <p>
+<!-- À propos -->
+<section class="container my-5" id="about">
+  <h2 class="section-title"><i class="fa-solid fa-user me-2 text-success"></i>À propos de moi</h2>
+  <p class="text-muted">
     Passionné par le développement web et les nouvelles technologies, 
-    je crée des applications performantes et des sites modernes.
+    je crée des applications performantes, dynamiques et esthétiques.
+    Mon objectif : concevoir des solutions modernes adaptées aux besoins de chaque projet.
   </p>
 </section>
 
-<!-- Section Compétences -->
-<section class="container my-5">
-  <h2 class="mb-4">Compétences</h2>
-  <div class="mb-3">
-    <label>HTML5 / CSS3</label>
-    <div class="progress">
-      <div class="progress-bar bg-primary" role="progressbar" style="width: 0%" data-skill="90">0%</div>
+<!-- Parcours -->
+<section class="container my-5" id="parcours">
+  <h2 class="section-title"><i class="fa-solid fa-graduation-cap me-2 text-primary"></i>Parcours</h2>
+  <div class="timeline">
+    <div class="timeline-item" data-year="2023-2025">
+      <i class="fa-solid fa-calendar-days timeline-icon text-danger"></i>
+      <div class="timeline-content">
+        <h5>Diplômé d'État en Électricité et Plomberie</h5>
+        <p><i class="fa-solid fa-school text-success me-2"></i>SOLTEC Mandrosoa Ivato</p>
+      </div>
     </div>
-  </div>
-  <div class="mb-3">
-    <label>JavaScript / jQuery</label>
-    <div class="progress">
-      <div class="progress-bar bg-success" role="progressbar" style="width: 0%" data-skill="80">0%</div>
+    <div class="timeline-item" data-year="2024-2025">
+      <i class="fa-solid fa-code timeline-icon text-info"></i>
+      <div class="timeline-content">
+        <h5>Autodidacte en Python & Django</h5>
+      </div>
     </div>
-  </div>
-  <div class="mb-3">
-    <label>Python / Django</label>
-    <div class="progress">
-      <div class="progress-bar bg-info" role="progressbar" style="width: 0%" data-skill="85">0%</div>
+    <div class="timeline-item" data-year="2022-2024">
+      <i class="fa-brands fa-laravel timeline-icon text-danger"></i>
+      <div class="timeline-content">
+        <h5>Autodidacte en PHP & Laravel</h5>
+      </div>
     </div>
-  </div>
-  <div class="mb-3">
-    <label>PHP / Laravel</label>
-    <div class="progress">
-      <div class="progress-bar bg-warning text-dark" role="progressbar" style="width: 0%" data-skill="75">0%</div>
+    <div class="timeline-item" data-year="2022">
+      <i class="fa-solid fa-graduation-cap timeline-icon text-warning"></i>
+      <div class="timeline-content">
+        <h5>1ère année en Informatique</h5>
+        <p>CNTEMAD Antanimena</p>
+      </div>
+    </div>
+    <div class="timeline-item" data-year="2021">
+      <i class="fa-solid fa-pen-ruler timeline-icon text-success"></i>
+      <div class="timeline-content">
+        <h5>PAO & DAO</h5>
+        <p>ITC Andravoahangy</p>
+      </div>
+    </div>
+    <div class="timeline-item" data-year="2020">
+      <i class="fa-solid fa-microchip timeline-icon text-primary"></i>
+      <div class="timeline-content">
+        <h5>1ère année en ESIIA (Électronique Système Informatique & IA)</h5>
+        <p>ISPM Antsobolo</p>
+      </div>
+    </div>
+    <div class="timeline-item" data-year="2019">
+      <i class="fa-solid fa-book timeline-icon text-danger"></i>
+      <div class="timeline-content">
+        <h5>Baccalauréat Série D</h5>
+        <p>Lycée Ambohidratrimo</p>
+      </div>
+    </div>
+    <div class="timeline-item" data-year="2015">
+      <i class="fa-solid fa-graduation-cap timeline-icon text-primary"></i>
+      <div class="timeline-content">
+        <h5>BEPC Général</h5>
+        <p>CEG Ambohidratrimo</p>
+      </div>
+    </div>
+    <div class="timeline-item" data-year="2011">
+      <i class="fa-solid fa-school timeline-icon text-success"></i>
+      <div class="timeline-content">
+        <h5>CEPE</h5>
+        <p>EPP Ambohidratrimo</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- Section Projets -->
-<section class="container my-5">
-  <h2 class="mb-4">Mes Projets</h2>
+<!-- Expériences -->
+<section class="container my-5" id="experience">
+  <h2 class="section-title"><i class="fa-solid fa-briefcase me-2 text-danger"></i>Expériences Professionnelles</h2>
+  <div class="timeline">
+    <div class="timeline-item" data-year="2024-2025">
+      <i class="fa-solid fa-laptop-code timeline-icon text-info"></i>
+      <div class="timeline-content">
+        <h5>Développeur Web Full Stack (Django) & Télévendeur</h5>
+        <p>Zara Soa</p>
+      </div>
+    </div>
+    <div class="timeline-item" data-year="2023">
+      <i class="fa-solid fa-industry timeline-icon text-primary"></i>
+      <div class="timeline-content">
+        <h5>Agent de production</h5>
+        <p>AMCHO Ambohibao Andranomena</p>
+      </div>
+    </div>
+    <div class="timeline-item" data-year="2021">
+      <i class="fa-solid fa-user-check timeline-icon text-success"></i>
+      <div class="timeline-content">
+        <h5>Agent Enquêteur</h5>
+        <p>FID – Enquête COVID-19</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Compétences -->
+<section class="container my-5" id="skills">
+  <h2 class="section-title"><i class="fa-solid fa-code me-2 text-info"></i>Compétences</h2>
+  <div class="row">
+    <div class="col-md-6">
+      <label>HTML5 / CSS3</label>
+      <div class="progress mb-3">
+        <div class="progress-bar bg-primary" data-skill="90">0%</div>
+      </div>
+      <label>JavaScript / jQuery</label>
+      <div class="progress mb-3">
+        <div class="progress-bar bg-success" data-skill="80">0%</div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label>Python / Django</label>
+      <div class="progress mb-3">
+        <div class="progress-bar bg-info text-dark" data-skill="85">0%</div>
+      </div>
+      <label>PHP / Laravel</label>
+      <div class="progress mb-3">
+        <div class="progress-bar bg-warning text-dark" data-skill="75">0%</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Projets -->
+<section class="container my-5" id="projects">
+  <h2 class="section-title"><i class="fa-solid fa-diagram-project me-2 text-warning"></i>Mes Projets</h2>
   <div class="row g-4">
-    <!-- Projet 1 -->
     <div class="col-md-4">
-      <div class="card shadow-sm">
+      <div class="card project-card h-100">
         <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Projet 1">
         <div class="card-body">
           <h5 class="card-title">Projet E-commerce</h5>
-          <p class="card-text">Une boutique en ligne avec gestion des produits, panier et paiement en ligne.</p>
-          <a href="https://github.com/username/projet-ecommerce" class="btn btn-primary btn-sm" target="_blank">Code</a>
-          <a href="https://monsite-ecommerce.com" class="btn btn-outline-secondary btn-sm" target="_blank">Démo</a>
-        </div>
-      </div>
-    </div>
-    <!-- Projet 2 -->
-    <div class="col-md-4">
-      <div class="card shadow-sm">
-        <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Projet 2">
-        <div class="card-body">
-          <h5 class="card-title">Application de Gestion</h5>
-          <p class="card-text">Une application pour gérer les étudiants, les cours et les notes en ligne.</p>
-          <a href="https://github.com/username/gestion-app" class="btn btn-primary btn-sm" target="_blank">Code</a>
+          <p class="card-text">Boutique en ligne avec gestion des produits, panier et paiement en ligne.</p>
+          <a href="#" class="btn btn-primary btn-sm" target="_blank">Code</a>
           <a href="#" class="btn btn-outline-secondary btn-sm" target="_blank">Démo</a>
         </div>
       </div>
     </div>
-    <!-- Projet 3 -->
     <div class="col-md-4">
-      <div class="card shadow-sm">
+      <div class="card project-card h-100">
+        <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Projet 2">
+        <div class="card-body">
+          <h5 class="card-title">Application de Gestion</h5>
+          <p class="card-text">Application pour gérer étudiants, cours et notes en ligne.</p>
+          <a href="#" class="btn btn-primary btn-sm" target="_blank">Code</a>
+          <a href="#" class="btn btn-outline-secondary btn-sm" target="_blank">Démo</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card project-card h-100">
         <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Projet 3">
         <div class="card-body">
           <h5 class="card-title">Portfolio Dynamique</h5>
-          <p class="card-text">Un portfolio responsive développé en Django avec système d’administration.</p>
-          <a href="https://github.com/username/portfolio-django" class="btn btn-primary btn-sm" target="_blank">Code</a>
+          <p class="card-text">Portfolio responsive avec Django et interface d’administration.</p>
+          <a href="#" class="btn btn-primary btn-sm" target="_blank">Code</a>
           <a href="#" class="btn btn-outline-secondary btn-sm" target="_blank">Démo</a>
         </div>
       </div>
@@ -98,22 +202,22 @@
   </div>
 </section>
 
-<!-- Section Contact -->
-<section class="container my-5">
-  <h2 class="mb-4">Contact</h2>
-  <ul class="list-unstyled">
-    <li><strong>Email:</strong> mbolafy.dev@gmail.com</li>
-    <li><strong>Téléphone:</strong> +261 34 07 726 12</li>
-    <li><strong>GitHub:</strong> <a href="https://github.com/MbolafyDev" target="_blank">MbolafyDev</a></li>
+<!-- Contact -->
+<section class="container my-5" id="contact">
+  <h2 class="section-title"><i class="fa-solid fa-envelope me-2 text-danger"></i>Contact</h2>
+  <ul class="list-unstyled fs-5">
+    <li><strong>Email :</strong> <a href="mailto:mbolafy.dev@gmail.com">mbolafy.dev@gmail.com</a></li>
+    <li><strong>Téléphone :</strong> +261 34 07 726 12</li>
+    <li><strong>GitHub :</strong> <a href="https://github.com/MbolafyDev" target="_blank">MbolafyDev</a></li>
   </ul>
 </section>
 
 <!-- Footer -->
 <footer class="text-center py-4 bg-dark text-light">
-  <p>&copy; 2025 John Doe - Tous droits réservés</p>
+  <p>&copy; 2025 Mbola Fy Dev - Tous droits réservés</p>
 </footer>
 
-<!-- jQuery + Bootstrap Bundle -->
+<!-- JS -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="script/script.js"></script>
