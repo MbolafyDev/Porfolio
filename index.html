@@ -162,13 +162,32 @@
   </div>
 </section>
 
-<!-- Projets -->
+<!-- Projets avec slider -->
 <section class="container my-5" id="projects">
   <h2 class="section-title"><i class="fa-solid fa-diagram-project me-2 text-warning"></i>Mes Projets</h2>
   <div class="row g-4">
+
+    <!-- Projet 1 -->
     <div class="col-md-4">
       <div class="card project-card h-100">
-        <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Projet 1">
+        <div id="carouselProjet1" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="img/tlmt1.JPG" class="d-block w-100" alt="TLMT Services 1">
+            </div>
+            <div class="carousel-item">
+              <img src="img/tlmt2.JPG" class="d-block w-100" alt="TLMT Services 2">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselProjet1" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+            <span class="visually-hidden">Précédent</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselProjet1" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+            <span class="visually-hidden">Suivant</span>
+          </button>
+        </div>
         <div class="card-body">
           <h5 class="card-title">TLMT Services</h5>
           <p class="card-text">Application web Django combinant gestion de production, e‑commerce et e‑learning. 
@@ -178,9 +197,31 @@
         </div>
       </div>
     </div>
+
+    <!-- Projet 2 -->
     <div class="col-md-4">
       <div class="card project-card h-100">
-        <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Projet 2">
+        <div id="carouselProjet2" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="img/fam1.JPG" class="d-block w-100" alt="Application de Gestion 1">
+            </div>
+            <div class="carousel-item">
+              <img src="img/fam3.JPG" class="d-block w-100" alt="Application de Gestion 2">
+            </div>
+            <div class="carousel-item">
+              <img src="img/fam2.JPG" class="d-block w-100" alt="Application de Gestion 2">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselProjet2" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+            <span class="visually-hidden">Précédent</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselProjet2" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+            <span class="visually-hidden">Suivant</span>
+          </button>
+        </div>
         <div class="card-body">
           <h5 class="card-title">Application de Gestion</h5>
           <p class="card-text">Application Django pour gérer les finances de la famille : suivi des dépôts et retraits, 
@@ -191,9 +232,17 @@
         </div>
       </div>
     </div>
+
+    <!-- Projet 3 -->
     <div class="col-md-4">
       <div class="card project-card h-100">
-        <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Projet 3">
+        <div id="carouselProjet3" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="img/portfolio1.JPG" class="d-block w-100" alt="Portfolio Dynamique 1">
+            </div>
+          </div>
+        </div>
         <div class="card-body">
           <h5 class="card-title">Portfolio Dynamique</h5>
           <p class="card-text">Portfolio responsive avec Django et interface d’administration.</p>
@@ -202,6 +251,7 @@
         </div>
       </div>
     </div>
+
   </div>
 </section>
 
