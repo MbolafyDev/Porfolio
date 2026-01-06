@@ -33,8 +33,8 @@
   <h2 class="section-title reveal" ref="items">À propos</h2>
   <p class="about reveal" ref="items">
     Développeur web fullstack spécialisé en Django et Laravel,
-    je conçois des applications modernes, performantes et sécurisées
-    avec une attention particulière à l’expérience utilisateur.
+    je crée des applications modernes, performantes et sécurisées
+    avec une forte attention à l’UX et à la qualité du code.
   </p>
 </section>
 
@@ -59,7 +59,7 @@
     <div class="skill-card reveal" ref="items" v-for="s in skills">
       <span>{{ s.name }}</span>
       <div class="skill-bar">
-        <div class="skill-progress" :style="{width: s.animate ? s.value + '%' : '0%'}"></div>
+        <div class="skill-progress" :style="{ width: s.animate ? s.value + '%' : '0%' }"></div>
       </div>
     </div>
   </div>
@@ -116,7 +116,7 @@ createApp({
       })
     },{threshold:.2});
 
-    this.$refs.items.forEach(el=>observer.observe(el));
+    this.$refs.items.forEach(el => observer.observe(el));
   }
 }).mount("#app");
 </script>
