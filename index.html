@@ -22,29 +22,46 @@
       font-family: 'Poppins', sans-serif;
       padding-top: 90px;
     }
-
     a { text-decoration: none; transition: 0.3s; }
     a:hover { opacity: 0.8; }
 
     /* ===== NAVBAR ===== */
     .navbar {
-      background: #ffffff; 
-      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
-    }
-    .nav-link {
-      color: #111827 !important; 
-      font-weight: 500;
-      margin: 0 5px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-    .nav-link.active, .nav-link:hover {
-      color: #3b82f6 !important; 
-      font-weight: 700;
+      background: rgba(255,255,255,0.95); 
+      backdrop-filter: blur(6px);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      border-radius: 12px;
+      padding: 0.5rem 1rem;
+      transition: all 0.3s;
     }
     .navbar-brand {
       color: #22c55e !important; 
       font-weight: bold;
+      font-size: 1.5rem;
+      letter-spacing: 1px;
+    }
+    .nav-link {
+      color: #111827 !important; 
+      font-weight: 500;
+      margin: 0 8px;
+      cursor: pointer;
+      padding: 8px 10px;
+      border-radius: 6px;
+      transition: all 0.3s;
+    }
+    .nav-link.active, .nav-link:hover {
+      color: #ffffff !important;
+      background: #3b82f6;
+      font-weight: 700;
+      box-shadow: 0 4px 12px rgba(59,130,246,0.4);
+    }
+    .navbar-toggler {
+      border: none;
+      border-radius: 8px;
+    }
+    .navbar-toggler-icon {
+      background-color: #22c55e;
+      border-radius: 4px;
     }
 
     /* ===== SECTIONS ===== */
@@ -294,7 +311,6 @@
 
 <script>
 const { createApp } = Vue;
-
 createApp({
   data() {
     return {
@@ -342,9 +358,7 @@ createApp({
     }
   },
   mounted(){
-    this.skills.forEach(skill => {
-      setTimeout(()=> skill.animate=true, 600);
-    });
+    this.skills.forEach(skill => { setTimeout(()=> skill.animate=true, 600); });
   }
 }).mount('#app');
 </script>
