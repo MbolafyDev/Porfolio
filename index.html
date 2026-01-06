@@ -17,17 +17,18 @@
   <style>
     /* ===== GLOBAL ===== */
     body {
-      background: #1e293b;
-      color: #ffffff;
+      background: #ffffff; /* Fond blanc pour le reste du site */
+      color: #111827; /* Texte noir */
       font-family: 'Poppins', sans-serif;
       padding-top: 90px;
     }
 
     a { text-decoration: none; }
 
-    .navbar { background: #111827; }
+    /* ===== NAVBAR ===== */
+    .navbar { background: #111827; } /* navbar dark */
     .nav-link {
-      color: #fbbf24 !important;
+      color: #fbbf24 !important; /* warning */
       cursor: pointer;
       transition: 0.3s;
     }
@@ -41,6 +42,8 @@
       min-height: 80vh;
       padding: 60px 15px;
       animation: fade 0.5s ease-in-out;
+      background: #ffffff; /* Fond blanc pour les sections */
+      color: #111827; /* Texte noir pour les sections */
     }
     @keyframes fade {
       from { opacity: 0; transform: translateY(20px); }
@@ -59,18 +62,18 @@
       height: 260px;
       object-fit: cover;
       border-radius: 50%;
-      box-shadow: 0 15px 40px rgba(0,0,0,.5);
+      box-shadow: 0 15px 40px rgba(0,0,0,.2);
       border: 5px solid #fbbf24;
     }
     .hero h1 span { color: #fbbf24; }
-    .hero p { color: #ffffff; }
+    .hero p { color: #111827; }
 
     /* ===== CARDS ===== */
     .card {
       border-radius: 15px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-      background-color: #111827;
-      color: #ffffff;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+      background-color: #ffffff;
+      color: #111827;
     }
     h1 span, .skill-card i, .timeline-badge { color: #fbbf24; }
 
@@ -85,8 +88,8 @@
       text-align: center;
       transition: transform 0.3s;
       border-radius: 12px;
-      background: #1f2937;
-      color: #ffffff;
+      background: #f8f9fa;
+      color: #111827;
     }
     .skill-card:hover { transform: translateY(-5px); }
     .skill-card i { font-size: 2rem; color: #fbbf24; }
@@ -95,13 +98,13 @@
     .timeline-modern { display: flex; flex-direction: column; gap: 15px; }
     .timeline-item-modern {
       display: flex; align-items: flex-start;
-      background-color: #1f2937;
+      background-color: #f8f9fa;
       padding: 15px 20px; border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
       transition: all 0.3s ease;
-      color: #ffffff;
+      color: #111827;
     }
-    .timeline-item-modern:hover { transform: translateY(-2px); box-shadow: 0 6px 12px rgba(0,0,0,0.5);}
+    .timeline-item-modern:hover { transform: translateY(-2px); box-shadow: 0 6px 12px rgba(0,0,0,0.2);}
     .timeline-badge {
       width: 50px; height: 50px; border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
@@ -112,11 +115,13 @@
 
     /* ===== FOOTER ===== */
     footer {
-      background: #111827;
+      background: #ffffff; /* fond blanc */
       text-align: center;
       padding: 20px;
-      color: #fbbf24;
+      color: #111827;
+      border-top: 3px solid #fbbf24;
       margin-top: 40px;
+      font-weight: bold;
     }
 
     /* ===== RESPONSIVE ===== */
@@ -183,7 +188,6 @@
     </div>
   </div>
 
-  <!-- NOUVELLE SECTION PARCOURS & EXPERIENCES -->
   <div class="container section" v-if="page==='experience'">
     <h2 class="mb-4 text-warning">Parcours & Expériences</h2>
 
