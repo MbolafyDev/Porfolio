@@ -15,11 +15,15 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 
   <style>
+    /* ===== GLOBAL ===== */
     body {
       background: #0f172a;
       color: #e5e7eb;
-      font-family: 'Segoe UI', sans-serif;
+      font-family: 'Poppins', sans-serif;
+      padding-top: 80px; /* espace pour navbar fixe */
     }
+
+    a { text-decoration: none; }
 
     .navbar {
       background: #020617;
@@ -28,6 +32,7 @@
     .nav-link {
       color: #94a3b8 !important;
       cursor: pointer;
+      transition: 0.3s;
     }
 
     .nav-link.active {
@@ -35,6 +40,7 @@
       font-weight: bold;
     }
 
+    /* ===== SECTIONS ===== */
     .section {
       min-height: 80vh;
       padding: 80px 15px;
@@ -57,11 +63,66 @@
       color: #38bdf8;
     }
 
+    /* ===== HERO ===== */
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .hero img {
+      width: 260px;
+      height: 260px;
+      object-fit: cover;
+      border-radius: 18px;
+      box-shadow: 0 25px 60px rgba(0,0,0,.15);
+    }
+
+    /* ===== SKILLS ===== */
+    .skills {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+    }
+
+    .skill-card {
+      padding: 20px;
+      border-radius: 15px;
+      background: #020617;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      text-align: center;
+      transition: transform 0.3s;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .skill-card i {
+      font-size: 2rem;
+      color: #38bdf8;
+    }
+
+    /* ===== FOOTER ===== */
     footer {
       background: #020617;
       text-align: center;
-      padding: 15px;
+      padding: 20px;
       color: #64748b;
+      margin-top: 40px;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media(max-width: 900px){
+      .hero-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .hero img {
+        margin: auto;
+      }
     }
   </style>
 </head>
@@ -93,30 +154,39 @@
     </div>
   </nav>
 
-  <!-- SECTIONS -->
+  <!-- SECTIONS DYNAMIQUES -->
   <div class="container section" v-if="page === 'home'">
-    <h1 class="fw-bold">Bonjour, je suis <span>Développeur Web Fullstack</span></h1>
-    <p class="mt-3 text-secondary">
-      Spécialisé en Django, Vue.js et solutions web modernes.
-    </p>
+    <div class="hero-grid">
+      <div>
+        <h1 class="fw-bold">Bonjour, je suis <span>{{ profile.name }}</span></h1>
+        <p class="mt-3 text-secondary">{{ profile.title }}</p>
+        <a href="#contact" class="btn btn-info mt-3">Me contacter</a>
+      </div>
+      <div>
+        <img :src="profile.photo" alt="Photo">
+      </div>
+    </div>
   </div>
 
   <div class="container section" v-if="page === 'about'">
     <div class="card p-4">
       <h2>À propos</h2>
       <p>
-        Développeur web fullstack avec expérience en applications web,
-        e-commerce, e-learning et solutions techniques avancées.
+        {{ profile.about }}
       </p>
     </div>
   </div>
 
   <div class="container section" v-if="page === 'skills'">
-    <div class="row g-4">
-      <div class="col-md-4" v-for="skill in skills">
-        <div class="card p-4 text-center">
-          <i :class="skill.icon + ' fa-2x text-info'"></i>
-          <h5 class="mt-3">{{ skill.name }}</h5>
+    <h2 class="mb-4">Compétences</h2>
+    <div class="skills">
+      <div class="skill-card" v-for="skill in skills" :key="skill.name">
+        <i :class="skill.icon"></i>
+        <h5 class="mt-2">{{ skill.name }}</h5>
+        <div class="progress mt-2">
+          <div class="progress-bar bg-info" role="progressbar" 
+               :style="{width: skill.animate ? skill.value + '%' : '0%'}"
+               :aria-valuenow="skill.value" aria-valuemin="0" aria-valuemax="100">{{ skill.value }}%</div>
         </div>
       </div>
     </div>
@@ -126,25 +196,23 @@
     <div class="card p-4">
       <h2>Projets</h2>
       <ul>
-        <li>Plateforme E-commerce & E-learning</li>
-        <li>Gestion scolaire (Django)</li>
-        <li>Portfolio professionnel dynamique</li>
+        <li v-for="project in projects">{{ project }}</li>
       </ul>
     </div>
   </div>
 
-  <div class="container section" v-if="page === 'contact'">
+  <div class="container section" v-if="page === 'contact'" id="contact">
     <div class="card p-4">
       <h2>Contact</h2>
-      <p>Email : mbolafy.dev@gmail.com</p>
-      <p>WhatsApp : +261 34 077 2612</p>
+      <p>Email : {{ profile.email }}</p>
+      <p>WhatsApp : {{ profile.phone }}</p>
+      <p>GitHub : <a :href="profile.github" target="_blank">{{ profile.github }}</a></p>
     </div>
   </div>
 
   <footer>
     © 2026 - Portfolio Développeur Web
   </footer>
-
 </div>
 
 <script>
@@ -154,6 +222,15 @@ createApp({
   data() {
     return {
       page: 'home',
+      profile: {
+        name: "ANDRIATSIKETRAKARIVONINDRIAKA Mbola Fy",
+        title: "Développeur Web Fullstack | Django & Laravel",
+        about: "Développeur web fullstack avec expérience en applications web, e-commerce, e-learning et solutions techniques avancées.",
+        email: "mbolafy.dev@gmail.com",
+        phone: "+261 34 077 2612",
+        github: "https://github.com/MbolafyDev",
+        photo: "img/pdp.jpg"
+      },
       menus: [
         { key: 'home', label: 'Accueil', icon: 'fa-solid fa-house' },
         { key: 'about', label: 'À propos', icon: 'fa-solid fa-user' },
@@ -162,14 +239,25 @@ createApp({
         { key: 'contact', label: 'Contact', icon: 'fa-solid fa-envelope' },
       ],
       skills: [
-        { name: 'HTML / CSS / Bootstrap', icon: 'fa-brands fa-html5' },
-        { name: 'Vue.js', icon: 'fa-brands fa-vuejs' },
-        { name: 'Python / Django', icon: 'fa-brands fa-python' },
-        { name: 'Git / GitHub', icon: 'fa-brands fa-github' },
-        { name: 'UI / UX', icon: 'fa-solid fa-pen-nib' },
-        { name: 'Dev Fullstack', icon: 'fa-solid fa-layer-group' },
+        { name: 'HTML / CSS / Bootstrap', icon: 'fa-brands fa-html5', value: 90, animate: false },
+        { name: 'Vue.js', icon: 'fa-brands fa-vuejs', value: 85, animate: false },
+        { name: 'Python / Django', icon: 'fa-brands fa-python', value: 80, animate: false },
+        { name: 'Git / GitHub', icon: 'fa-brands fa-github', value: 75, animate: false },
+        { name: 'UI / UX', icon: 'fa-solid fa-pen-nib', value: 70, animate: false },
+        { name: 'Dev Fullstack', icon: 'fa-solid fa-layer-group', value: 85, animate: false }
+      ],
+      projects: [
+        "Plateforme E-commerce & E-learning",
+        "Gestion scolaire (Django)",
+        "Portfolio professionnel dynamique"
       ]
     }
+  },
+  mounted(){
+    // Animation des compétences
+    this.skills.forEach(skill => {
+      setTimeout(() => skill.animate = true, 600);
+    });
   }
 }).mount('#app');
 </script>
