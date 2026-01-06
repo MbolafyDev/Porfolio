@@ -6,44 +6,47 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
 </head>
-<body>
 
+<body>
 <div id="app">
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-card fade-up" ref="reveal">
-    <img src="img/pdp.jpg">
-    <h1>{{ profile.name }}</h1>
-    <p>{{ profile.title }}</p>
-    <button @click="scrollTo('contact')">Me contacter</button>
+  <div class="hero-grid">
+    <div class="reveal" ref="items">
+      <h1>{{ profile.name }}</h1>
+      <p>{{ profile.title }}</p>
+      <a href="#contact" class="btn">Me contacter</a>
+    </div>
+
+    <div class="reveal" ref="items">
+      <img src="img/pdp.jpg" alt="Photo">
+    </div>
   </div>
 </section>
 
 <!-- ABOUT -->
-<section id="about">
-  <h2 class="section-title fade-up" ref="reveal">À propos</h2>
-  <div class="about-card fade-up" ref="reveal">
-    <p>
-      Développeur web passionné, spécialisé en Django et Laravel,
-      je conçois des applications modernes, rapides et sécurisées.
-    </p>
-  </div>
+<section>
+  <h2 class="section-title reveal" ref="items">À propos</h2>
+  <p class="about reveal" ref="items">
+    Développeur web fullstack spécialisé en Django et Laravel,
+    je conçois des applications modernes, performantes et sécurisées
+    avec une attention particulière à l’expérience utilisateur.
+  </p>
 </section>
 
 <!-- PARCOURS -->
 <section>
-  <h2 class="section-title fade-up" ref="reveal">Parcours</h2>
+  <h2 class="section-title reveal" ref="items">Parcours</h2>
   <div class="timeline">
-    <div class="timeline-item fade-up" ref="reveal" v-for="p in parcours">
+    <div class="timeline-item reveal" ref="items" v-for="p in parcours">
       <i :class="p.icon + ' timeline-icon'"></i>
       <div>
         <h4>{{ p.title }}</h4>
-        <small>{{ p.year }}</small>
+        <span>{{ p.year }}</span>
       </div>
     </div>
   </div>
@@ -51,22 +54,24 @@
 
 <!-- SKILLS -->
 <section>
-  <h2 class="section-title fade-up" ref="reveal">Compétences</h2>
+  <h2 class="section-title reveal" ref="items">Compétences</h2>
   <div class="skills">
-    <div class="skill-card fade-up" ref="reveal" v-for="s in skills">
-      <strong>{{ s.name }}</strong>
+    <div class="skill-card reveal" ref="items" v-for="s in skills">
+      <span>{{ s.name }}</span>
       <div class="skill-bar">
-        <div class="skill-progress" :style="{width:s.animate ? s.value+'%' : '0%'}"></div>
+        <div class="skill-progress" :style="{width: s.animate ? s.value + '%' : '0%'}"></div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- CONTACT -->
-<section id="contact" class="contact">
-  <h2 class="section-title fade-up" ref="reveal">Contact</h2>
-  <a :href="'mailto:'+profile.email">{{ profile.email }}</a>
-  <a :href="profile.github" target="_blank">GitHub</a>
+<section id="contact">
+  <h2 class="section-title reveal" ref="items">Contact</h2>
+  <div class="contact reveal" ref="items">
+    <a :href="'mailto:' + profile.email">{{ profile.email }}</a>
+    <a :href="profile.github" target="_blank">GitHub</a>
+  </div>
 </section>
 
 <footer>
@@ -103,20 +108,15 @@ createApp({
   },
   mounted(){
     const observer = new IntersectionObserver(entries=>{
-      entries.forEach(e=>{
-        if(e.isIntersecting){
-          e.target.classList.add("show");
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add("show");
           this.skills.forEach(s=>s.animate=true);
         }
-      });
+      })
     },{threshold:.2});
 
-    this.$refs.reveal.forEach(el=>observer.observe(el));
-  },
-  methods:{
-    scrollTo(id){
-      document.getElementById(id).scrollIntoView({behavior:"smooth"});
-    }
+    this.$refs.items.forEach(el=>observer.observe(el));
   }
 }).mount("#app");
 </script>
