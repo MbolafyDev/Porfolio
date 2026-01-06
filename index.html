@@ -17,23 +17,33 @@
   <style>
     /* ===== GLOBAL ===== */
     body {
-      background: #fefefe; /* fond global clair */
-      color: #111827; /* texte noir */
+      background: #f9fafb; /* fond clair global */
+      color: #111827; 
       font-family: 'Poppins', sans-serif;
       padding-top: 90px;
     }
 
-    a { text-decoration: none; }
+    a { text-decoration: none; transition: 0.3s; }
+    a:hover { opacity: 0.8; }
 
     /* ===== NAVBAR ===== */
-    .navbar { background: #111827; } /* navbar dark */
+    .navbar {
+      background: #ffffff; 
+      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    }
     .nav-link {
-      color: #22c55e !important; /* vert clair */
+      color: #111827 !important; 
+      font-weight: 500;
+      margin: 0 5px;
       cursor: pointer;
       transition: 0.3s;
     }
     .nav-link.active, .nav-link:hover {
-      color: #3b82f6 !important; /* bleu clair */
+      color: #3b82f6 !important; 
+      font-weight: 700;
+    }
+    .navbar-brand {
+      color: #22c55e !important; 
       font-weight: bold;
     }
 
@@ -42,8 +52,10 @@
       min-height: 80vh;
       padding: 60px 15px;
       animation: fade 0.5s ease-in-out;
-      background: #ffffff; /* fond blanc pour sections */
-      color: #111827; /* texte noir */
+      background: #ffffff; 
+      border-radius: 15px;
+      margin-bottom: 30px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.05);
     }
     @keyframes fade {
       from { opacity: 0; transform: translateY(20px); }
@@ -59,27 +71,41 @@
     }
     .hero img {
       width: 100%;
-      max-width: 260px;
+      max-width: 250px;
       height: auto;
-      aspect-ratio: 1/1;
-      object-fit: cover;
       border-radius: 50%;
-      box-shadow: 0 15px 40px rgba(0,0,0,.2);
-      border: 5px solid #22c55e; /* vert clair */
+      border: 5px solid #22c55e;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
       margin: auto;
       display: block;
     }
-    .hero h1 span { color: #22c55e; } /* vert clair */
-    .hero p { color: #111827; } /* noir */
+    .hero h1 span { color: #22c55e; }
+    .hero p { color: #374151; }
+
+    /* ===== BUTTON ===== */
+    .btn-custom {
+      background-color: #22c55e;
+      color: #ffffff;
+      font-weight: 600;
+      padding: 10px 25px;
+      border-radius: 8px;
+      transition: all 0.3s;
+    }
+    .btn-custom:hover {
+      background-color: #16a34a;
+      color: #ffffff;
+    }
 
     /* ===== CARDS ===== */
     .card {
       border-radius: 15px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-      background-color: #f8fafc; /* blanc doux */
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+      background-color: #fefefe; 
       color: #111827;
+      transition: transform 0.3s, box-shadow 0.3s;
     }
-    h1 span, .skill-card i, .timeline-badge { color: #22c55e; } /* vert clair */
+    .card:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(0,0,0,0.1); }
+    h1 span, .skill-card i, .timeline-badge { color: #22c55e; }
 
     /* ===== SKILLS ===== */
     .skills {
@@ -90,48 +116,59 @@
     .skill-card {
       padding: 20px;
       text-align: center;
-      transition: transform 0.3s;
       border-radius: 12px;
-      background: #e0f2fe; /* bleu clair */
-      color: #111827;
+      background: #e0f2fe; 
+      transition: transform 0.3s, box-shadow 0.3s;
     }
-    .skill-card:hover { transform: translateY(-5px); }
-    .skill-card i { font-size: 2rem; color: #22c55e; } /* vert clair */
+    .skill-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.08);}
+    .skill-card i { font-size: 2rem; }
+
+    .progress {
+      height: 8px;
+      border-radius: 5px;
+      background-color: #d1d5db;
+    }
+    .progress-bar {
+      border-radius: 5px;
+    }
 
     /* ===== TIMELINE ===== */
     .timeline-modern { display: flex; flex-direction: column; gap: 15px; }
     .timeline-item-modern {
       display: flex; align-items: flex-start;
-      background-color: #f1f5f9; /* fond clair */
-      padding: 15px 20px; border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      background-color: #f3f4f6;
+      padding: 20px; border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
       transition: all 0.3s ease;
-      color: #111827;
     }
-    .timeline-item-modern:hover { transform: translateY(-2px); box-shadow: 0 6px 12px rgba(0,0,0,0.15);}
+    .timeline-item-modern:hover { transform: translateY(-2px); box-shadow: 0 6px 15px rgba(0,0,0,0.08);}
     .timeline-badge {
       width: 50px; height: 50px; border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
       font-size: 1.3rem; margin-right: 15px;
-      background: #3b82f6; color: #ffffff; /* bleu clair */
+      background: #3b82f6; color: #ffffff;
       flex-shrink: 0;
     }
 
     /* ===== FOOTER ===== */
     footer {
-      background: #111827; /* footer dark */
+      background: #f3f4f6;
       text-align: center;
-      padding: 20px;
-      color: #ffffff;
-      border-top: 3px solid #22c55e; /* vert clair */
+      padding: 25px 15px;
+      color: #111827;
+      border-top: 3px solid #22c55e;
       margin-top: 40px;
-      font-weight: bold;
+      font-weight: 600;
     }
 
     /* ===== RESPONSIVE ===== */
     @media(max-width: 900px){
       .hero-grid { grid-template-columns: 1fr; text-align: center; }
-      .hero img { margin: auto; width: 180px; height: 180px; }
+      .hero img { width: 180px; height: 180px; }
+    }
+
+    @media(max-width: 576px){
+      .skills { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -142,7 +179,7 @@
   <!-- NAVBAR -->
   <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container">
-      <a class="navbar-brand fw-bold text-green">MbolaFy</a>
+      <a class="navbar-brand">MbolaFy</a>
       <button class="navbar-toggler bg-light" data-bs-toggle="collapse" data-bs-target="#menu">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -164,7 +201,7 @@
       <div>
         <h1 class="fw-bold">Bonjour, je suis <span>{{ profile.name }}</span></h1>
         <p class="mt-3">{{ profile.title }}</p>
-        <a href="#contact" class="btn" style="background-color:#22c55e; color:#111827;">Me contacter</a>
+        <a href="#contact" class="btn btn-custom mt-3">Me contacter</a>
       </div>
       <div><img :src="profile.photo" alt="Photo de profil"></div>
     </div>
@@ -172,20 +209,20 @@
 
   <div class="container section" v-if="page==='about'">
     <div class="card p-4">
-      <h2 class="text-green">À propos de moi</h2>
+      <h2>À propos de moi</h2>
       <p>{{ profile.about }}</p>
     </div>
   </div>
 
   <div class="container section" v-if="page==='skills'">
-    <h2 class="mb-4 text-green">Compétences</h2>
+    <h2 class="mb-4">Compétences</h2>
     <div class="skills">
       <div class="skill-card" v-for="skill in skills" :key="skill.name">
         <i :class="skill.icon"></i>
         <h5 class="mt-2">{{ skill.name }}</h5>
         <div class="progress mt-2">
           <div class="progress-bar" role="progressbar" 
-               :style="{width: skill.animate ? skill.value + '%' : '0%', backgroundColor:'#3b82f6', color:'#111827'}"
+               :style="{width: skill.animate ? skill.value + '%' : '0%', backgroundColor:'#3b82f6'}"
                :aria-valuenow="skill.value" aria-valuemin="0" aria-valuemax="100">{{ skill.value }}%</div>
         </div>
       </div>
@@ -193,9 +230,9 @@
   </div>
 
   <div class="container section" v-if="page==='experience'">
-    <h2 class="mb-4 text-green">Parcours & Expériences</h2>
+    <h2 class="mb-4">Parcours & Expériences</h2>
 
-    <h4 class="text-green">Parcours</h4>
+    <h4>Parcours</h4>
     <div class="timeline-modern mb-4">
       <div class="timeline-item-modern" v-for="item in parcours" :key="item.title">
         <div class="timeline-badge"><i class="fa-solid fa-graduation-cap"></i></div>
@@ -206,7 +243,7 @@
       </div>
     </div>
 
-    <h4 class="text-green">Expériences professionnelles</h4>
+    <h4>Expériences professionnelles</h4>
     <div class="timeline-modern">
       <div class="timeline-item-modern" v-for="item in experiences" :key="item.title">
         <div class="timeline-badge"><i class="fa-solid fa-briefcase"></i></div>
@@ -219,7 +256,7 @@
   </div>
 
   <div class="container section" v-if="page==='projects'">
-    <h2 class="text-green">Mes Projets</h2>
+    <h2>Mes Projets</h2>
     <div class="row g-4">
       <div class="col-md-4" v-for="project in projects" :key="project.title">
         <div class="card h-100">
@@ -232,7 +269,7 @@
             </div>
           </div>
           <div class="card-body">
-            <h6 class="card-title text-green">{{ project.title }}</h6>
+            <h6 class="card-title">{{ project.title }}</h6>
             <p class="card-text">{{ project.description }}</p>
             <a v-if="project.github" :href="project.github" target="_blank" class="text-green">Code</a> |
             <a v-if="project.demo" :href="project.demo" target="_blank" class="text-green">Démo</a>
@@ -244,10 +281,10 @@
 
   <div class="container section" v-if="page==='contact'" id="contact">
     <div class="card p-4">
-      <h2 class="text-green">Contact</h2>
+      <h2>Contact</h2>
       <p>Email : {{ profile.email }}</p>
       <p>WhatsApp : {{ profile.phone }}</p>
-      <p>GitHub : <a :href="profile.github" target="_blank" class="text-green">{{ profile.github }}</a></p>
+      <p>GitHub : <a :href="profile.github" target="_blank">{{ profile.github }}</a></p>
       <p>Localisation : {{ profile.location }}</p>
     </div>
   </div>
@@ -289,59 +326,18 @@ createApp({
         { name: 'UI / UX', icon: 'fa-solid fa-pen-nib', value: 70, animate: false }
       ],
       parcours: [
-        {
-          title: "Electricité et Plomberie",
-          period: "2023 - 2025",
-          description: "Formation en électricité et plomberie, spécialisée dans l’installation, la maintenance et la réparation des systèmes électriques et sanitaires, avec un accent sur la sécurité et l’efficacité."
-        },
-        {
-          title: "ESIIA - ISPM Antsobolo",
-          period: "2019 - 2020",
-          description: "Formation axée sur l’électronique, les systèmes informatiques et l’intelligence artificielle, préparant à concevoir, programmer et optimiser des solutions intelligentes et innovantes."
-        },
-        {
-          title: "Informatique - CNTEMAD Antananarivo",
-          period: "2023 - 2023",
-          description: "Formation en informatique, spécialisée dans le développement, la maintenance et la gestion des systèmes informatiques et applications logicielles."
-        }
+        { title: "Electricité et Plomberie", period: "2023 - 2025", description: "Formation en électricité et plomberie..." },
+        { title: "ESIIA - ISPM Antsobolo", period: "2019 - 2020", description: "Formation axée sur l’électronique..." },
+        { title: "Informatique - CNTEMAD Antananarivo", period: "2023 - 2023", description: "Formation en informatique..." }
       ],
       experiences: [
-        {
-          title: "Agent de production – AMCHO Ambohibao",
-          period: "2023 – 2023",
-          description: "Agent de production chez Amcho Ambohibao, responsable du suivi des opérations de production, du contrôle de la qualité et de l’efficacité des processus de fabrication."
-        },
-        {
-          title: "Developpeur web Fullstack Django – Zara Space",
-          period: "2025 – -",
-          description: "Développeur web full stack chez Zaraspace, spécialisé dans la conception et le développement d’applications web avec le framework Django, assurant la création de fonctionnalités robustes, performantes et responsives."
-        }
+        { title: "Agent de production – AMCHO Ambohibao", period: "2023 – 2023", description: "Agent de production..." },
+        { title: "Developpeur web Fullstack Django – Zara Space", period: "2025 – -", description: "Développeur web full stack..." }
       ],
       projects: [
-        {
-          id: 1,
-          title: "TLMT Services",
-          description: "Application web Django combinant gestion de production, e-commerce et e-learning.",
-          images: ["img/tlmt1.JPG","img/tlmt2.JPG"],
-          github: "https://github.com/MbolafyDev/tlmt",
-          demo: "https://tlmt.pythonanywhere.com/"
-        },
-        {
-          id: 2,
-          title: "Application de Gestion",
-          description: "Application Django pour gérer les finances de la famille.",
-          images: ["img/fam1.JPG"],
-          github: "https://github.com/MbolafyDev/famfinance",
-          demo: "https://fymbola.pythonanywhere.com/"
-        },
-        {
-          id: 3,
-          title: "Portfolio Dynamique",
-          description: "Portfolio responsive avec Django et interface d’administration.",
-          images: ["img/portfolio1.JPG"],
-          github: "https://github.com/MbolafyDev/Porfolio",
-          demo: "https://mbolafydev.github.io/Porfolio/"
-        }
+        { id: 1, title: "TLMT Services", description: "Application web Django...", images: ["img/tlmt1.JPG","img/tlmt2.JPG"], github: "https://github.com/MbolafyDev/tlmt", demo: "https://tlmt.pythonanywhere.com/" },
+        { id: 2, title: "Application de Gestion", description: "Application Django...", images: ["img/fam1.JPG"], github: "https://github.com/MbolafyDev/famfinance", demo: "https://fymbola.pythonanywhere.com/" },
+        { id: 3, title: "Portfolio Dynamique", description: "Portfolio responsive...", images: ["img/portfolio1.JPG"], github: "https://github.com/MbolafyDev/Porfolio", demo: "https://mbolafydev.github.io/Porfolio/" }
       ]
     }
   },
