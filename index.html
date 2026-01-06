@@ -17,24 +17,22 @@
   <style>
     /* ===== GLOBAL ===== */
     body {
-      background: #1e293b; /* Fond sombre pour meilleur contraste */
-      color: #ffffff;      /* Texte blanc par défaut */
+      background: #1e293b;
+      color: #ffffff;
       font-family: 'Poppins', sans-serif;
       padding-top: 90px;
     }
 
     a { text-decoration: none; }
 
-    .navbar {
-      background: #111827;
-    }
+    .navbar { background: #111827; }
     .nav-link {
-      color: #fbbf24 !important; /* Texte warning sur le navbar */
+      color: #fbbf24 !important;
       cursor: pointer;
       transition: 0.3s;
     }
     .nav-link.active, .nav-link:hover {
-      color: #ffffff !important; /* Texte blanc au survol */
+      color: #ffffff !important;
       font-weight: bold;
     }
 
@@ -62,14 +60,10 @@
       object-fit: cover;
       border-radius: 50%;
       box-shadow: 0 15px 40px rgba(0,0,0,.5);
-      border: 5px solid #fbbf24; /* bordure warning */
+      border: 5px solid #fbbf24;
     }
-    .hero h1 span {
-      color: #fbbf24; /* texte important en warning */
-    }
-    .hero p {
-      color: #ffffff; /* texte blanc */
-    }
+    .hero h1 span { color: #fbbf24; }
+    .hero p { color: #ffffff; }
 
     /* ===== CARDS ===== */
     .card {
@@ -78,9 +72,7 @@
       background-color: #111827;
       color: #ffffff;
     }
-    h1 span, .skill-card i, .timeline-badge {
-      color: #fbbf24;
-    }
+    h1 span, .skill-card i, .timeline-badge { color: #fbbf24; }
 
     /* ===== SKILLS ===== */
     .skills {
@@ -100,9 +92,7 @@
     .skill-card i { font-size: 2rem; color: #fbbf24; }
 
     /* ===== TIMELINE ===== */
-    .timeline-modern {
-      display: flex; flex-direction: column; gap: 15px;
-    }
+    .timeline-modern { display: flex; flex-direction: column; gap: 15px; }
     .timeline-item-modern {
       display: flex; align-items: flex-start;
       background-color: #1f2937;
@@ -193,6 +183,35 @@
     </div>
   </div>
 
+  <!-- NOUVELLE SECTION PARCOURS & EXPERIENCES -->
+  <div class="container section" v-if="page==='experience'">
+    <h2 class="mb-4 text-warning">Parcours & Expériences</h2>
+
+    <!-- PARCOURS -->
+    <h4 class="text-warning">Parcours</h4>
+    <div class="timeline-modern mb-4">
+      <div class="timeline-item-modern" v-for="item in parcours" :key="item.title">
+        <div class="timeline-badge"><i class="fa-solid fa-graduation-cap"></i></div>
+        <div>
+          <h6>{{ item.title }} - {{ item.period }}</h6>
+          <p>{{ item.description }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- EXPERIENCES -->
+    <h4 class="text-warning">Expériences professionnelles</h4>
+    <div class="timeline-modern">
+      <div class="timeline-item-modern" v-for="item in experiences" :key="item.title">
+        <div class="timeline-badge"><i class="fa-solid fa-briefcase"></i></div>
+        <div>
+          <h6>{{ item.title }} - {{ item.period }}</h6>
+          <p>{{ item.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="container section" v-if="page==='projects'">
     <h2 class="text-warning">Mes Projets</h2>
     <div class="row g-4">
@@ -212,35 +231,6 @@
             <a v-if="project.github" :href="project.github" target="_blank" class="text-warning">Code</a> |
             <a v-if="project.demo" :href="project.demo" target="_blank" class="text-warning">Démo</a>
           </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ===== PARCOURS & EXPERIENCES ===== -->
-  <div class="container section" v-if="page==='experience'">
-    <h2 class="text-warning mb-4">Parcours & Expériences</h2>
-    
-    <!-- Parcours -->
-    <h4 class="text-warning">Parcours</h4>
-    <div class="timeline-modern mb-5">
-      <div class="timeline-item-modern" v-for="edu in parcours" :key="edu.title">
-        <div class="timeline-badge"><i class="fa-solid fa-graduation-cap"></i></div>
-        <div>
-          <h5 class="mb-1">{{ edu.title }} ({{ edu.year }})</h5>
-          <p>{{ edu.description }}</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Experiences -->
-    <h4 class="text-warning">Expériences professionnelles</h4>
-    <div class="timeline-modern">
-      <div class="timeline-item-modern" v-for="exp in experiences" :key="exp.title">
-        <div class="timeline-badge"><i class="fa-solid fa-briefcase"></i></div>
-        <div>
-          <h5 class="mb-1">{{ exp.title }} – {{ exp.company }} ({{ exp.year }})</h5>
-          <p>{{ exp.description }}</p>
         </div>
       </div>
     </div>
@@ -280,8 +270,8 @@ createApp({
         { key: 'home', label: 'Accueil', icon: 'fa-solid fa-house' },
         { key: 'about', label: 'À propos', icon: 'fa-solid fa-user' },
         { key: 'skills', label: 'Compétences', icon: 'fa-solid fa-code' },
+        { key: 'experience', label: 'Parcours & Expériences', icon: 'fa-solid fa-briefcase' },
         { key: 'projects', label: 'Projets', icon: 'fa-solid fa-briefcase' },
-        { key: 'experience', label: 'Parcours', icon: 'fa-solid fa-graduation-cap' },
         { key: 'contact', label: 'Contact', icon: 'fa-solid fa-envelope' },
       ],
       skills: [
@@ -291,6 +281,35 @@ createApp({
         { name: 'PHP / Laravel', icon: 'fa-brands fa-laravel', value: 75, animate: false },
         { name: 'Git / GitHub', icon: 'fa-brands fa-github', value: 75, animate: false },
         { name: 'UI / UX', icon: 'fa-solid fa-pen-nib', value: 70, animate: false }
+      ],
+      parcours: [
+        {
+          title: "Electricité et Plomberie",
+          period: "2023 - 2025",
+          description: "Formation en électricité et plomberie, spécialisée dans l’installation, la maintenance et la réparation des systèmes électriques et sanitaires, avec un accent sur la sécurité et l’efficacité."
+        },
+        {
+          title: "ESIIA - ISPM Antsobolo",
+          period: "2019 - 2020",
+          description: "Formation axée sur l’électronique, les systèmes informatiques et l’intelligence artificielle, préparant à concevoir, programmer et optimiser des solutions intelligentes et innovantes."
+        },
+        {
+          title: "Informatique - CNTEMAD Antananarivo",
+          period: "2023 - 2023",
+          description: "Formation en informatique, spécialisée dans le développement, la maintenance et la gestion des systèmes informatiques et applications logicielles."
+        }
+      ],
+      experiences: [
+        {
+          title: "Agent de production – AMCHO Ambohibao",
+          period: "2023 – 2023",
+          description: "Agent de production chez Amcho Ambohibao, responsable du suivi des opérations de production, du contrôle de la qualité et de l’efficacité des processus de fabrication."
+        },
+        {
+          title: "Developpeur web Fullstack Django – Zara Space",
+          period: "2025 – -",
+          description: "Développeur web full stack chez Zaraspace, spécialisé dans la conception et le développement d’applications web avec le framework Django, assurant la création de fonctionnalités robustes, performantes et responsives."
+        }
       ],
       projects: [
         {
@@ -317,15 +336,6 @@ createApp({
           github: "https://github.com/MbolafyDev/Porfolio",
           demo: "https://mbolafydev.github.io/Porfolio/"
         }
-      ],
-      parcours: [
-        { title: "Electricité et Plomberie", year: "2023 - 2025", description: "Formation en électricité et plomberie, spécialisée dans l’installation, la maintenance et la réparation des systèmes électriques et sanitaires, avec un accent sur la sécurité et l’efficacité." },
-        { title: "ESIIA - ISPM Antsobolo", year: "2019 - 2020", description: "Formation axée sur l’électronique, les systèmes informatiques et l’intelligence artificielle, préparant à concevoir, programmer et optimiser des solutions intelligentes et innovantes." },
-        { title: "Informatique - CNTEMAD Antananarivo", year: "2023 - 2023", description: "Formation en informatique, spécialisée dans le développement, la maintenance et la gestion des systèmes informatiques et applications logicielles." }
-      ],
-      experiences: [
-        { title: "Agent de production", company: "AMCHO Ambohibao", year: "2023 – 2023", description: "Agent de production chez Amcho Ambohibao, responsable du suivi des opérations de production, du contrôle de la qualité et de l’efficacité des processus de fabrication." },
-        { title: "Développeur web Fullstack Django", company: "Zara Space", year: "2025 – -", description: "Développeur web full stack chez Zaraspace, spécialisé dans la conception et le développement d’applications web avec le framework Django, assurant la création de fonctionnalités robustes, performantes et responsives." }
       ]
     }
   },
