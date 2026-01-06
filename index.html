@@ -1,226 +1,122 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Portfolio - Mbola Fy</title>
+<meta charset="UTF-8">
+<title>Portfolio | Mbola Fy</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-  <!-- Bootstrap 5 -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Font Awesome -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="css/styles.css">
-
-  <!-- Animations Vue -->
-  <style>
-    .fade-enter-active, .fade-leave-active {
-      transition: opacity 0.8s ease;
-    }
-    .fade-enter-from, .fade-leave-to {
-      opacity: 0;
-    }
-
-    .slide-up-enter-active {
-      transition: all 0.8s ease;
-    }
-    .slide-up-enter-from {
-      opacity: 0;
-      transform: translateY(40px);
-    }
-
-    .zoom-enter-active {
-      transition: transform 0.6s ease, opacity 0.6s ease;
-    }
-    .zoom-enter-from {
-      transform: scale(0.8);
-      opacity: 0;
-    }
-  </style>
 </head>
-
 <body>
 
 <div id="app">
 
-<!-- HEADER -->
-<header class="text-center py-5">
-  <div class="container">
-    <transition name="zoom" appear>
-      <img src="img/pdp.jpg" class="profile-img shadow-lg" alt="Photo">
-    </transition>
-
-    <transition name="fade" appear>
-      <h1 class="fw-bold mt-3">{{ profile.name }}</h1>
-    </transition>
-
-    <transition name="slide-up" appear>
-      <p class="lead text-light">{{ profile.title }}</p>
-    </transition>
-
-    <a href="#contact" class="btn btn-custom mt-3">Me Contacter</a>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-card fade-up" ref="reveal">
+    <img src="img/pdp.jpg">
+    <h1>{{ profile.name }}</h1>
+    <p>{{ profile.title }}</p>
+    <button @click="scrollTo('contact')">Me contacter</button>
   </div>
-</header>
+</section>
 
-<!-- A PROPOS -->
-<section class="container my-5" id="about">
-  <transition name="slide-up" appear>
-    <div>
-      <h2 class="section-title">
-        <i class="fa-solid fa-user me-2 text-success"></i>À propos de moi
-      </h2>
-      <p class="text-muted">
-        Passionné par le développement web et les nouvelles technologies,
-        je crée des applications performantes, dynamiques et esthétiques.
-      </p>
-    </div>
-  </transition>
+<!-- ABOUT -->
+<section id="about">
+  <h2 class="section-title fade-up" ref="reveal">À propos</h2>
+  <div class="about-card fade-up" ref="reveal">
+    <p>
+      Développeur web passionné, spécialisé en Django et Laravel,
+      je conçois des applications modernes, rapides et sécurisées.
+    </p>
+  </div>
 </section>
 
 <!-- PARCOURS -->
-<section class="container my-5" id="parcours">
-  <h2 class="section-title">
-    <i class="fa-solid fa-graduation-cap me-2 text-primary"></i>Parcours
-  </h2>
-
+<section>
+  <h2 class="section-title fade-up" ref="reveal">Parcours</h2>
   <div class="timeline">
-    <transition-group name="slide-up" tag="div">
-      <div class="timeline-item"
-           v-for="item in parcours"
-           :key="item.year"
-           :data-year="item.year">
-
-        <i :class="item.icon + ' timeline-icon ' + item.color"></i>
-
-        <div class="timeline-content">
-          <h5>{{ item.title }}</h5>
-          <p v-if="item.school">{{ item.school }}</p>
-        </div>
-      </div>
-    </transition-group>
-  </div>
-</section>
-
-<!-- EXPERIENCE -->
-<section class="container my-5" id="experience">
-  <h2 class="section-title">
-    <i class="fa-solid fa-briefcase me-2 text-danger"></i>Expériences
-  </h2>
-
-  <div class="timeline">
-    <transition-group name="slide-up" tag="div">
-      <div class="timeline-item"
-           v-for="exp in experiences"
-           :key="exp.year"
-           :data-year="exp.year">
-
-        <i :class="exp.icon + ' timeline-icon ' + exp.color"></i>
-
-        <div class="timeline-content">
-          <h5>{{ exp.title }}</h5>
-          <p>{{ exp.company }}</p>
-        </div>
-      </div>
-    </transition-group>
-  </div>
-</section>
-
-<!-- COMPETENCES -->
-<section class="container my-5" id="skills">
-  <h2 class="section-title">
-    <i class="fa-solid fa-code me-2 text-info"></i>Compétences
-  </h2>
-
-  <div class="row">
-    <div class="col-md-6"
-         v-for="skill in skills"
-         :key="skill.name">
-      <label>{{ skill.name }}</label>
-      <div class="progress mb-3">
-        <div class="progress-bar"
-             :class="skill.color"
-             :style="{ width: skill.animate ? skill.value + '%' : '0%' }">
-          {{ skill.animate ? skill.value + '%' : '0%' }}
-        </div>
+    <div class="timeline-item fade-up" ref="reveal" v-for="p in parcours">
+      <i :class="p.icon + ' timeline-icon'"></i>
+      <div>
+        <h4>{{ p.title }}</h4>
+        <small>{{ p.year }}</small>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PROJETS (inchangés visuellement) -->
-<section class="container my-5" id="projects">
-  <h2 class="section-title">
-    <i class="fa-solid fa-diagram-project me-2 text-warning"></i>Mes Projets
-  </h2>
-
-  <!-- TU GARDES EXACTEMENT TES CARDS BOOTSTRAP -->
+<!-- SKILLS -->
+<section>
+  <h2 class="section-title fade-up" ref="reveal">Compétences</h2>
+  <div class="skills">
+    <div class="skill-card fade-up" ref="reveal" v-for="s in skills">
+      <strong>{{ s.name }}</strong>
+      <div class="skill-bar">
+        <div class="skill-progress" :style="{width:s.animate ? s.value+'%' : '0%'}"></div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- CONTACT -->
-<section class="container my-5" id="contact">
-  <h2 class="section-title">
-    <i class="fa-solid fa-envelope me-2 text-danger"></i>Contact
-  </h2>
-  <ul class="list-unstyled fs-5">
-    <li>Email : <a :href="'mailto:' + profile.email">{{ profile.email }}</a></li>
-    <li>Téléphone : {{ profile.phone }}</li>
-    <li>GitHub : <a :href="profile.github" target="_blank">MbolafyDev</a></li>
-  </ul>
+<section id="contact" class="contact">
+  <h2 class="section-title fade-up" ref="reveal">Contact</h2>
+  <a :href="'mailto:'+profile.email">{{ profile.email }}</a>
+  <a :href="profile.github" target="_blank">GitHub</a>
 </section>
 
-<footer class="text-center py-4 bg-dark text-light">
-  <p>&copy; 2025 Mbola Fy Dev - Tous droits réservés</p>
+<footer>
+  © 2025 Mbola Fy Dev
 </footer>
 
 </div>
 
-<!-- JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-
 <script>
 const { createApp } = Vue;
 
 createApp({
-  data() {
-    return {
-      profile: {
-        name: "ANDRIATSIKETRAKARIVONINDRIAKA Mbola Fy",
-        title: "Développeur Web Fullstack | Django & Laravel",
-        email: "mbolafy.dev@gmail.com",
-        phone: "+261 34 07 726 12",
-        github: "https://github.com/MbolafyDev"
+  data(){
+    return{
+      profile:{
+        name:"ANDRIATSIKETRAKARIVONINDRIAKA Mbola Fy",
+        title:"Développeur Web Fullstack Django & Laravel",
+        email:"mbolafy.dev@gmail.com",
+        github:"https://github.com/MbolafyDev"
       },
-
-      parcours: [
-        { year: "2023-2025", title: "Diplômé d'État Électricité & Plomberie", school: "SOLTEC Mandrosoa Ivato", icon: "fa-solid fa-graduation-cap", color: "text-primary" },
-        { year: "2024-2025", title: "Autodidacte Python & Django", icon: "fa-solid fa-code", color: "text-info" },
-        { year: "2022-2024", title: "Autodidacte PHP & Laravel", icon: "fa-brands fa-laravel", color: "text-danger" }
+      parcours:[
+        {year:"2023-2025",title:"Diplôme Électricité & Plomberie",icon:"fa-solid fa-graduation-cap"},
+        {year:"2024-2025",title:"Autodidacte Django",icon:"fa-solid fa-code"},
+        {year:"2022-2024",title:"Autodidacte Laravel",icon:"fa-brands fa-laravel"}
       ],
-
-      experiences: [
-        { year: "2024-2025", title: "Développeur Fullstack Django", company: "Zara Soa", icon: "fa-solid fa-laptop-code", color: "text-info" },
-        { year: "2023", title: "Agent de production", company: "AMCHO", icon: "fa-solid fa-industry", color: "text-primary" }
-      ],
-
-      skills: [
-        { name: "HTML / CSS", value: 90, color: "bg-primary", animate: false },
-        { name: "JavaScript", value: 80, color: "bg-success", animate: false },
-        { name: "Python / Django", value: 85, color: "bg-info text-dark", animate: false },
-        { name: "PHP / Laravel", value: 75, color: "bg-warning text-dark", animate: false }
+      skills:[
+        {name:"HTML / CSS",value:90,animate:false},
+        {name:"JavaScript",value:80,animate:false},
+        {name:"Python / Django",value:85,animate:false},
+        {name:"PHP / Laravel",value:75,animate:false}
       ]
     }
   },
+  mounted(){
+    const observer = new IntersectionObserver(entries=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          e.target.classList.add("show");
+          this.skills.forEach(s=>s.animate=true);
+        }
+      });
+    },{threshold:.2});
 
-  mounted() {
-    setTimeout(() => {
-      this.skills.forEach(skill => skill.animate = true);
-    }, 600);
+    this.$refs.reveal.forEach(el=>observer.observe(el));
+  },
+  methods:{
+    scrollTo(id){
+      document.getElementById(id).scrollIntoView({behavior:"smooth"});
+    }
   }
 }).mount("#app");
 </script>
