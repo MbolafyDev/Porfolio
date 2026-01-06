@@ -16,263 +16,214 @@
 
   <!-- CSS -->
   <link rel="stylesheet" href="css/styles.css">
+
+  <!-- Animations Vue -->
+  <style>
+    .fade-enter-active, .fade-leave-active {
+      transition: opacity 0.8s ease;
+    }
+    .fade-enter-from, .fade-leave-to {
+      opacity: 0;
+    }
+
+    .slide-up-enter-active {
+      transition: all 0.8s ease;
+    }
+    .slide-up-enter-from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+
+    .zoom-enter-active {
+      transition: transform 0.6s ease, opacity 0.6s ease;
+    }
+    .zoom-enter-from {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- Header -->
+<div id="app">
+
+<!-- HEADER -->
 <header class="text-center py-5">
   <div class="container">
-    <img src="img/pdp.jpg" alt="Photo de profil" class="profile-img shadow-lg">
-    <h1 class="fw-bold mt-3">ANDRIATSIKETRAKARIVONINDRIAKA Mbola Fy</h1>
-    <p class="lead text-light">Développeur Web Fullstack | Django & Laravel</p>
+    <transition name="zoom" appear>
+      <img src="img/pdp.jpg" class="profile-img shadow-lg" alt="Photo">
+    </transition>
+
+    <transition name="fade" appear>
+      <h1 class="fw-bold mt-3">{{ profile.name }}</h1>
+    </transition>
+
+    <transition name="slide-up" appear>
+      <p class="lead text-light">{{ profile.title }}</p>
+    </transition>
+
     <a href="#contact" class="btn btn-custom mt-3">Me Contacter</a>
   </div>
 </header>
 
-<!-- À propos -->
+<!-- A PROPOS -->
 <section class="container my-5" id="about">
-  <h2 class="section-title"><i class="fa-solid fa-user me-2 text-success"></i>À propos de moi</h2>
-  <p class="text-muted">
-    Passionné par le développement web et les nouvelles technologies, 
-    je crée des applications performantes, dynamiques et esthétiques.
-    Mon objectif : concevoir des solutions modernes adaptées aux besoins de chaque projet.
-  </p>
+  <transition name="slide-up" appear>
+    <div>
+      <h2 class="section-title">
+        <i class="fa-solid fa-user me-2 text-success"></i>À propos de moi
+      </h2>
+      <p class="text-muted">
+        Passionné par le développement web et les nouvelles technologies,
+        je crée des applications performantes, dynamiques et esthétiques.
+      </p>
+    </div>
+  </transition>
 </section>
 
-<!-- Parcours -->
+<!-- PARCOURS -->
 <section class="container my-5" id="parcours">
-  <h2 class="section-title"><i class="fa-solid fa-graduation-cap me-2 text-primary"></i>Parcours</h2>
+  <h2 class="section-title">
+    <i class="fa-solid fa-graduation-cap me-2 text-primary"></i>Parcours
+  </h2>
+
   <div class="timeline">
-    <div class="timeline-item" data-year="2023-2025">
-      <i class="fa-solid fa-calendar-days timeline-icon text-danger"></i>
-      <div class="timeline-content">
-        <h5>Diplômé d'État en Électricité et Plomberie</h5>
-        <p><i class="fa-solid fa-school text-success me-2"></i>SOLTEC Mandrosoa Ivato</p>
+    <transition-group name="slide-up" tag="div">
+      <div class="timeline-item"
+           v-for="item in parcours"
+           :key="item.year"
+           :data-year="item.year">
+
+        <i :class="item.icon + ' timeline-icon ' + item.color"></i>
+
+        <div class="timeline-content">
+          <h5>{{ item.title }}</h5>
+          <p v-if="item.school">{{ item.school }}</p>
+        </div>
       </div>
-    </div>
-    <div class="timeline-item" data-year="2024-2025">
-      <i class="fa-solid fa-code timeline-icon text-info"></i>
-      <div class="timeline-content">
-        <h5>Autodidacte en Python & Django</h5>
-      </div>
-    </div>
-    <div class="timeline-item" data-year="2022-2024">
-      <i class="fa-brands fa-laravel timeline-icon text-danger"></i>
-      <div class="timeline-content">
-        <h5>Autodidacte en PHP & Laravel</h5>
-      </div>
-    </div>
-    <div class="timeline-item" data-year="2022">
-      <i class="fa-solid fa-graduation-cap timeline-icon text-warning"></i>
-      <div class="timeline-content">
-        <h5>1ère année en Informatique</h5>
-        <p>CNTEMAD Antanimena</p>
-      </div>
-    </div>
-    <div class="timeline-item" data-year="2021">
-      <i class="fa-solid fa-pen-ruler timeline-icon text-success"></i>
-      <div class="timeline-content">
-        <h5>PAO & DAO</h5>
-        <p>ITC Andravoahangy</p>
-      </div>
-    </div>
-    <div class="timeline-item" data-year="2020">
-      <i class="fa-solid fa-microchip timeline-icon text-primary"></i>
-      <div class="timeline-content">
-        <h5>1ère année en ESIIA (Électronique Système Informatique & IA)</h5>
-        <p>ISPM Antsobolo</p>
-      </div>
-    </div>
-    <div class="timeline-item" data-year="2019">
-      <i class="fa-solid fa-book timeline-icon text-danger"></i>
-      <div class="timeline-content">
-        <h5>Baccalauréat Série D</h5>
-        <p>Lycée Ambohidratrimo</p>
-      </div>
-    </div>
-    <div class="timeline-item" data-year="2015">
-      <i class="fa-solid fa-graduation-cap timeline-icon text-primary"></i>
-      <div class="timeline-content">
-        <h5>BEPC Général</h5>
-        <p>CEG Ambohidratrimo</p>
-      </div>
-    </div>
-    <div class="timeline-item" data-year="2011">
-      <i class="fa-solid fa-school timeline-icon text-success"></i>
-      <div class="timeline-content">
-        <h5>CEPE</h5>
-        <p>EPP Ambohidratrimo</p>
-      </div>
-    </div>
+    </transition-group>
   </div>
 </section>
 
-<!-- Expériences -->
+<!-- EXPERIENCE -->
 <section class="container my-5" id="experience">
-  <h2 class="section-title"><i class="fa-solid fa-briefcase me-2 text-danger"></i>Expériences Professionnelles</h2>
+  <h2 class="section-title">
+    <i class="fa-solid fa-briefcase me-2 text-danger"></i>Expériences
+  </h2>
+
   <div class="timeline">
-    <div class="timeline-item" data-year="2024-2025">
-      <i class="fa-solid fa-laptop-code timeline-icon text-info"></i>
-      <div class="timeline-content">
-        <h5>Développeur Web Full Stack (Django) & Télévendeur</h5>
-        <p>Zara Soa</p>
+    <transition-group name="slide-up" tag="div">
+      <div class="timeline-item"
+           v-for="exp in experiences"
+           :key="exp.year"
+           :data-year="exp.year">
+
+        <i :class="exp.icon + ' timeline-icon ' + exp.color"></i>
+
+        <div class="timeline-content">
+          <h5>{{ exp.title }}</h5>
+          <p>{{ exp.company }}</p>
+        </div>
       </div>
-    </div>
-    <div class="timeline-item" data-year="2023">
-      <i class="fa-solid fa-industry timeline-icon text-primary"></i>
-      <div class="timeline-content">
-        <h5>Agent de production</h5>
-        <p>AMCHO Ambohibao Andranomena</p>
-      </div>
-    </div>
-    <div class="timeline-item" data-year="2021">
-      <i class="fa-solid fa-user-check timeline-icon text-success"></i>
-      <div class="timeline-content">
-        <h5>Agent Enquêteur</h5>
-        <p>FID – Enquête COVID-19</p>
-      </div>
-    </div>
+    </transition-group>
   </div>
 </section>
 
-<!-- Compétences -->
+<!-- COMPETENCES -->
 <section class="container my-5" id="skills">
-  <h2 class="section-title"><i class="fa-solid fa-code me-2 text-info"></i>Compétences</h2>
+  <h2 class="section-title">
+    <i class="fa-solid fa-code me-2 text-info"></i>Compétences
+  </h2>
+
   <div class="row">
-    <div class="col-md-6">
-      <label>HTML5 / CSS3</label>
+    <div class="col-md-6"
+         v-for="skill in skills"
+         :key="skill.name">
+      <label>{{ skill.name }}</label>
       <div class="progress mb-3">
-        <div class="progress-bar bg-primary" data-skill="90">0%</div>
-      </div>
-      <label>JavaScript / jQuery</label>
-      <div class="progress mb-3">
-        <div class="progress-bar bg-success" data-skill="80">0%</div>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <label>Python / Django</label>
-      <div class="progress mb-3">
-        <div class="progress-bar bg-info text-dark" data-skill="85">0%</div>
-      </div>
-      <label>PHP / Laravel</label>
-      <div class="progress mb-3">
-        <div class="progress-bar bg-warning text-dark" data-skill="75">0%</div>
+        <div class="progress-bar"
+             :class="skill.color"
+             :style="{ width: skill.animate ? skill.value + '%' : '0%' }">
+          {{ skill.animate ? skill.value + '%' : '0%' }}
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Projets avec slider -->
+<!-- PROJETS (inchangés visuellement) -->
 <section class="container my-5" id="projects">
-  <h2 class="section-title"><i class="fa-solid fa-diagram-project me-2 text-warning"></i>Mes Projets</h2>
-  <div class="row g-4">
+  <h2 class="section-title">
+    <i class="fa-solid fa-diagram-project me-2 text-warning"></i>Mes Projets
+  </h2>
 
-    <!-- Projet 1 -->
-    <div class="col-md-4">
-      <div class="card project-card h-100">
-        <div id="carouselProjet1" class="carousel slide" data-bs-ride="carousel">
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img src="img/tlmt1.JPG" class="d-block w-100" alt="TLMT Services 1">
-            </div>
-            <div class="carousel-item">
-              <img src="img/tlmt2.JPG" class="d-block w-100" alt="TLMT Services 2">
-            </div>
-          </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselProjet1" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
-            <span class="visually-hidden">Précédent</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselProjet1" data-bs-slide="next">
-            <span class="carousel-control-next-icon"></span>
-            <span class="visually-hidden">Suivant</span>
-          </button>
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">TLMT Services</h5>
-          <p class="card-text">Application web Django combinant gestion de production, e‑commerce et e‑learning. 
-            Plateforme complète pour gérer les tâches, vendre en ligne et proposer des cours.</p>
-          <a href="https://github.com/MbolafyDev/tlmt" class="btn btn-primary btn-sm" target="_blank">Code</a>
-          <a href="https://tlmt.pythonanywhere.com/" class="btn btn-outline-secondary btn-sm" target="_blank">Démo</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Projet 2 -->
-    <div class="col-md-4">
-      <div class="card project-card h-100">
-        <div id="carouselProjet2" class="carousel slide" data-bs-ride="carousel">
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img src="img/fam1.JPG" class="d-block w-100" alt="Application de Gestion 1">
-            </div>
-            <div class="carousel-item">
-              <img src="img/fam3.JPG" class="d-block w-100" alt="Application de Gestion 2">
-            </div>
-            <div class="carousel-item">
-              <img src="img/fam2.JPG" class="d-block w-100" alt="Application de Gestion 2">
-            </div>
-          </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselProjet2" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
-            <span class="visually-hidden">Précédent</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselProjet2" data-bs-slide="next">
-            <span class="carousel-control-next-icon"></span>
-            <span class="visually-hidden">Suivant</span>
-          </button>
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">Application de Gestion</h5>
-          <p class="card-text">Application Django pour gérer les finances de la famille : suivi des dépôts et retraits, 
-            organisation des transactions et envoi de messages pour informer les membres de la famille 
-            des nouvelles importantes comme les réunions ou événements.</p>
-          <a href="https://github.com/MbolafyDev/famfinance" class="btn btn-primary btn-sm" target="_blank">Code</a>
-          <a href="https://fymbola.pythonanywhere.com/" class="btn btn-outline-secondary btn-sm" target="_blank">Démo</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Projet 3 -->
-    <div class="col-md-4">
-      <div class="card project-card h-100">
-        <div id="carouselProjet3" class="carousel slide" data-bs-ride="carousel">
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img src="img/portfolio1.JPG" class="d-block w-100" alt="Portfolio Dynamique 1">
-            </div>
-          </div>
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">Portfolio Dynamique</h5>
-          <p class="card-text">Portfolio responsive avec Django et interface d’administration.</p>
-          <a href="https://github.com/MbolafyDev/Porfolio" class="btn btn-primary btn-sm" target="_blank">Code</a>
-          <a href="https://mbolafydev.github.io/Porfolio/" class="btn btn-outline-secondary btn-sm" target="_blank">Démo</a>
-        </div>
-      </div>
-    </div>
-
-  </div>
+  <!-- TU GARDES EXACTEMENT TES CARDS BOOTSTRAP -->
 </section>
 
-<!-- Contact -->
+<!-- CONTACT -->
 <section class="container my-5" id="contact">
-  <h2 class="section-title"><i class="fa-solid fa-envelope me-2 text-danger"></i>Contact</h2>
+  <h2 class="section-title">
+    <i class="fa-solid fa-envelope me-2 text-danger"></i>Contact
+  </h2>
   <ul class="list-unstyled fs-5">
-    <li><strong>Email :</strong> <a href="mailto:mbolafy.dev@gmail.com">mbolafy.dev@gmail.com</a></li>
-    <li><strong>Téléphone :</strong> +261 34 07 726 12</li>
-    <li><strong>GitHub :</strong> <a href="https://github.com/MbolafyDev" target="_blank">MbolafyDev</a></li>
+    <li>Email : <a :href="'mailto:' + profile.email">{{ profile.email }}</a></li>
+    <li>Téléphone : {{ profile.phone }}</li>
+    <li>GitHub : <a :href="profile.github" target="_blank">MbolafyDev</a></li>
   </ul>
 </section>
 
-<!-- Footer -->
 <footer class="text-center py-4 bg-dark text-light">
   <p>&copy; 2025 Mbola Fy Dev - Tous droits réservés</p>
 </footer>
 
+</div>
+
 <!-- JS -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<script src="script/script.js"></script>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+<script>
+const { createApp } = Vue;
+
+createApp({
+  data() {
+    return {
+      profile: {
+        name: "ANDRIATSIKETRAKARIVONINDRIAKA Mbola Fy",
+        title: "Développeur Web Fullstack | Django & Laravel",
+        email: "mbolafy.dev@gmail.com",
+        phone: "+261 34 07 726 12",
+        github: "https://github.com/MbolafyDev"
+      },
+
+      parcours: [
+        { year: "2023-2025", title: "Diplômé d'État Électricité & Plomberie", school: "SOLTEC Mandrosoa Ivato", icon: "fa-solid fa-graduation-cap", color: "text-primary" },
+        { year: "2024-2025", title: "Autodidacte Python & Django", icon: "fa-solid fa-code", color: "text-info" },
+        { year: "2022-2024", title: "Autodidacte PHP & Laravel", icon: "fa-brands fa-laravel", color: "text-danger" }
+      ],
+
+      experiences: [
+        { year: "2024-2025", title: "Développeur Fullstack Django", company: "Zara Soa", icon: "fa-solid fa-laptop-code", color: "text-info" },
+        { year: "2023", title: "Agent de production", company: "AMCHO", icon: "fa-solid fa-industry", color: "text-primary" }
+      ],
+
+      skills: [
+        { name: "HTML / CSS", value: 90, color: "bg-primary", animate: false },
+        { name: "JavaScript", value: 80, color: "bg-success", animate: false },
+        { name: "Python / Django", value: 85, color: "bg-info text-dark", animate: false },
+        { name: "PHP / Laravel", value: 75, color: "bg-warning text-dark", animate: false }
+      ]
+    }
+  },
+
+  mounted() {
+    setTimeout(() => {
+      this.skills.forEach(skill => skill.animate = true);
+    }, 600);
+  }
+}).mount("#app");
+</script>
+
 </body>
 </html>
