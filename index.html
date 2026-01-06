@@ -217,6 +217,35 @@
     </div>
   </div>
 
+  <!-- ===== PARCOURS & EXPERIENCES ===== -->
+  <div class="container section" v-if="page==='experience'">
+    <h2 class="text-warning mb-4">Parcours & Expériences</h2>
+    
+    <!-- Parcours -->
+    <h4 class="text-warning">Parcours</h4>
+    <div class="timeline-modern mb-5">
+      <div class="timeline-item-modern" v-for="edu in parcours" :key="edu.title">
+        <div class="timeline-badge"><i class="fa-solid fa-graduation-cap"></i></div>
+        <div>
+          <h5 class="mb-1">{{ edu.title }} ({{ edu.year }})</h5>
+          <p>{{ edu.description }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Experiences -->
+    <h4 class="text-warning">Expériences professionnelles</h4>
+    <div class="timeline-modern">
+      <div class="timeline-item-modern" v-for="exp in experiences" :key="exp.title">
+        <div class="timeline-badge"><i class="fa-solid fa-briefcase"></i></div>
+        <div>
+          <h5 class="mb-1">{{ exp.title }} – {{ exp.company }} ({{ exp.year }})</h5>
+          <p>{{ exp.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="container section" v-if="page==='contact'" id="contact">
     <div class="card p-4">
       <h2 class="text-warning">Contact</h2>
@@ -252,6 +281,7 @@ createApp({
         { key: 'about', label: 'À propos', icon: 'fa-solid fa-user' },
         { key: 'skills', label: 'Compétences', icon: 'fa-solid fa-code' },
         { key: 'projects', label: 'Projets', icon: 'fa-solid fa-briefcase' },
+        { key: 'experience', label: 'Parcours', icon: 'fa-solid fa-graduation-cap' },
         { key: 'contact', label: 'Contact', icon: 'fa-solid fa-envelope' },
       ],
       skills: [
@@ -287,6 +317,15 @@ createApp({
           github: "https://github.com/MbolafyDev/Porfolio",
           demo: "https://mbolafydev.github.io/Porfolio/"
         }
+      ],
+      parcours: [
+        { title: "Electricité et Plomberie", year: "2023 - 2025", description: "Formation en électricité et plomberie, spécialisée dans l’installation, la maintenance et la réparation des systèmes électriques et sanitaires, avec un accent sur la sécurité et l’efficacité." },
+        { title: "ESIIA - ISPM Antsobolo", year: "2019 - 2020", description: "Formation axée sur l’électronique, les systèmes informatiques et l’intelligence artificielle, préparant à concevoir, programmer et optimiser des solutions intelligentes et innovantes." },
+        { title: "Informatique - CNTEMAD Antananarivo", year: "2023 - 2023", description: "Formation en informatique, spécialisée dans le développement, la maintenance et la gestion des systèmes informatiques et applications logicielles." }
+      ],
+      experiences: [
+        { title: "Agent de production", company: "AMCHO Ambohibao", year: "2023 – 2023", description: "Agent de production chez Amcho Ambohibao, responsable du suivi des opérations de production, du contrôle de la qualité et de l’efficacité des processus de fabrication." },
+        { title: "Développeur web Fullstack Django", company: "Zara Space", year: "2025 – -", description: "Développeur web full stack chez Zaraspace, spécialisé dans la conception et le développement d’applications web avec le framework Django, assurant la création de fonctionnalités robustes, performantes et responsives." }
       ]
     }
   },
