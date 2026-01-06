@@ -17,7 +17,7 @@
   <style>
     /* ===== GLOBAL ===== */
     body {
-      background: #f9fafb; /* fond clair global */
+      background: #f9fafb;
       color: #111827; 
       font-family: 'Poppins', sans-serif;
       padding-top: 90px;
@@ -27,7 +27,7 @@
 
     /* ===== NAVBAR ===== */
     .navbar {
-      background: rgba(255,255,255,0.95); 
+      background: #ffffff; /* navbar clair */
       backdrop-filter: blur(6px);
       box-shadow: 0 4px 15px rgba(0,0,0,0.08);
       border-radius: 12px;
@@ -88,7 +88,7 @@
     }
     .hero img {
       width: 100%;
-      max-width: 220px;
+      max-width: 250px;
       height: auto;
       border-radius: 50%;
       border: 5px solid #22c55e;
@@ -180,12 +180,13 @@
     }
 
     /* ===== RESPONSIVE ===== */
-    @media(max-width: 992px){
-      .hero-grid { grid-template-columns: 1fr; text-align: center; gap: 25px; }
-      .hero img { width: 180px; height: 180px; }
-    }
-    @media(max-width: 576px){
+    @media(max-width: 900px){
+      .hero-grid { grid-template-columns: 1fr; text-align: center; gap: 20px; }
       .hero img { width: 150px; height: 150px; }
+    }
+
+    @media(max-width: 576px){
+      .hero img { width: 120px; height: 120px; }
       .skills { grid-template-columns: 1fr; }
     }
   </style>
