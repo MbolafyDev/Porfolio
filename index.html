@@ -17,8 +17,8 @@
   <style>
     /* ===== GLOBAL ===== */
     body {
-      background: #ffffff; /* Fond blanc pour le reste du site */
-      color: #111827; /* Texte noir */
+      background: #111827; /* Fond dark pour tout le site */
+      color: #ffffff; /* Texte blanc */
       font-family: 'Poppins', sans-serif;
       padding-top: 90px;
     }
@@ -42,8 +42,8 @@
       min-height: 80vh;
       padding: 60px 15px;
       animation: fade 0.5s ease-in-out;
-      background: #ffffff; /* Fond blanc pour les sections */
-      color: #111827; /* Texte noir pour les sections */
+      background: #1f2937; /* Fond dark pour les sections */
+      color: #ffffff; /* Texte blanc pour les sections */
     }
     @keyframes fade {
       from { opacity: 0; transform: translateY(20px); }
@@ -62,18 +62,18 @@
       height: 260px;
       object-fit: cover;
       border-radius: 50%;
-      box-shadow: 0 15px 40px rgba(0,0,0,.2);
+      box-shadow: 0 15px 40px rgba(0,0,0,.5);
       border: 5px solid #fbbf24;
     }
     .hero h1 span { color: #fbbf24; }
-    .hero p { color: #111827; }
+    .hero p { color: #ffffff; }
 
     /* ===== CARDS ===== */
     .card {
       border-radius: 15px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-      background-color: #ffffff;
-      color: #111827;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+      background-color: #1f2937;
+      color: #ffffff;
     }
     h1 span, .skill-card i, .timeline-badge { color: #fbbf24; }
 
@@ -88,8 +88,8 @@
       text-align: center;
       transition: transform 0.3s;
       border-radius: 12px;
-      background: #f8f9fa;
-      color: #111827;
+      background: #374151; /* Fond dark pour skill card */
+      color: #ffffff;
     }
     .skill-card:hover { transform: translateY(-5px); }
     .skill-card i { font-size: 2rem; color: #fbbf24; }
@@ -98,13 +98,13 @@
     .timeline-modern { display: flex; flex-direction: column; gap: 15px; }
     .timeline-item-modern {
       display: flex; align-items: flex-start;
-      background-color: #f8f9fa;
+      background-color: #374151;
       padding: 15px 20px; border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.5);
       transition: all 0.3s ease;
-      color: #111827;
+      color: #ffffff;
     }
-    .timeline-item-modern:hover { transform: translateY(-2px); box-shadow: 0 6px 12px rgba(0,0,0,0.2);}
+    .timeline-item-modern:hover { transform: translateY(-2px); box-shadow: 0 6px 12px rgba(0,0,0,0.7);}
     .timeline-badge {
       width: 50px; height: 50px; border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
