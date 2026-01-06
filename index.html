@@ -88,13 +88,14 @@
     }
     .hero img {
       width: 100%;
-      max-width: 250px;
+      max-width: 220px;
       height: auto;
       border-radius: 50%;
       border: 5px solid #22c55e;
       box-shadow: 0 10px 30px rgba(0,0,0,0.1);
       margin: auto;
       display: block;
+      transition: all 0.3s;
     }
     .hero h1 span { color: #22c55e; }
     .hero p { color: #374151; }
@@ -179,12 +180,12 @@
     }
 
     /* ===== RESPONSIVE ===== */
-    @media(max-width: 900px){
-      .hero-grid { grid-template-columns: 1fr; text-align: center; }
+    @media(max-width: 992px){
+      .hero-grid { grid-template-columns: 1fr; text-align: center; gap: 25px; }
       .hero img { width: 180px; height: 180px; }
     }
-
     @media(max-width: 576px){
+      .hero img { width: 150px; height: 150px; }
       .skills { grid-template-columns: 1fr; }
     }
   </style>
