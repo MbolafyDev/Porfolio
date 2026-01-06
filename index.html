@@ -1,125 +1,179 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<title>Portfolio | Mbola Fy</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <title>Portfolio | Développeur Web</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- Vue JS CDN -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- FontAwesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background: #0f172a;
+      color: #e5e7eb;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .navbar {
+      background: #020617;
+    }
+
+    .nav-link {
+      color: #94a3b8 !important;
+      cursor: pointer;
+    }
+
+    .nav-link.active {
+      color: #38bdf8 !important;
+      font-weight: bold;
+    }
+
+    .section {
+      min-height: 80vh;
+      padding: 80px 15px;
+      animation: fade 0.5s ease-in-out;
+    }
+
+    @keyframes fade {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .card {
+      background: #020617;
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    h1 span {
+      color: #38bdf8;
+    }
+
+    footer {
+      background: #020617;
+      text-align: center;
+      padding: 15px;
+      color: #64748b;
+    }
+  </style>
 </head>
 
 <body>
 <div id="app">
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-grid">
-    <div class="reveal" ref="items">
-      <h1>{{ profile.name }}</h1>
-      <p>{{ profile.title }}</p>
-      <a href="#contact" class="btn">Me contacter</a>
-    </div>
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand text-info fw-bold">MbolaFy</a>
 
-    <div class="reveal" ref="items">
-      <img src="img/pdp.jpg" alt="Photo">
+      <button class="navbar-toggler bg-light" data-bs-toggle="collapse" data-bs-target="#menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="menu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item" v-for="item in menus">
+            <span
+              class="nav-link"
+              :class="{ active: page === item.key }"
+              @click="page = item.key">
+              <i :class="item.icon"></i> {{ item.label }}
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- SECTIONS -->
+  <div class="container section" v-if="page === 'home'">
+    <h1 class="fw-bold">Bonjour, je suis <span>Développeur Web Fullstack</span></h1>
+    <p class="mt-3 text-secondary">
+      Spécialisé en Django, Vue.js et solutions web modernes.
+    </p>
+  </div>
+
+  <div class="container section" v-if="page === 'about'">
+    <div class="card p-4">
+      <h2>À propos</h2>
+      <p>
+        Développeur web fullstack avec expérience en applications web,
+        e-commerce, e-learning et solutions techniques avancées.
+      </p>
     </div>
   </div>
-</section>
 
-<!-- ABOUT -->
-<section>
-  <h2 class="section-title reveal" ref="items">À propos</h2>
-  <p class="about reveal" ref="items">
-    Développeur web fullstack spécialisé en Django et Laravel,
-    je crée des applications modernes, performantes et sécurisées
-    avec une forte attention à l’UX et à la qualité du code.
-  </p>
-</section>
-
-<!-- PARCOURS -->
-<section>
-  <h2 class="section-title reveal" ref="items">Parcours</h2>
-  <div class="timeline">
-    <div class="timeline-item reveal" ref="items" v-for="p in parcours">
-      <i :class="p.icon + ' timeline-icon'"></i>
-      <div>
-        <h4>{{ p.title }}</h4>
-        <span>{{ p.year }}</span>
+  <div class="container section" v-if="page === 'skills'">
+    <div class="row g-4">
+      <div class="col-md-4" v-for="skill in skills">
+        <div class="card p-4 text-center">
+          <i :class="skill.icon + ' fa-2x text-info'"></i>
+          <h5 class="mt-3">{{ skill.name }}</h5>
+        </div>
       </div>
     </div>
   </div>
-</section>
 
-<!-- SKILLS -->
-<section>
-  <h2 class="section-title reveal" ref="items">Compétences</h2>
-  <div class="skills">
-    <div class="skill-card reveal" ref="items" v-for="s in skills">
-      <span>{{ s.name }}</span>
-      <div class="skill-bar">
-        <div class="skill-progress" :style="{ width: s.animate ? s.value + '%' : '0%' }"></div>
-      </div>
+  <div class="container section" v-if="page === 'projects'">
+    <div class="card p-4">
+      <h2>Projets</h2>
+      <ul>
+        <li>Plateforme E-commerce & E-learning</li>
+        <li>Gestion scolaire (Django)</li>
+        <li>Portfolio professionnel dynamique</li>
+      </ul>
     </div>
   </div>
-</section>
 
-<!-- CONTACT -->
-<section id="contact">
-  <h2 class="section-title reveal" ref="items">Contact</h2>
-  <div class="contact reveal" ref="items">
-    <a :href="'mailto:' + profile.email">{{ profile.email }}</a>
-    <a :href="profile.github" target="_blank">GitHub</a>
+  <div class="container section" v-if="page === 'contact'">
+    <div class="card p-4">
+      <h2>Contact</h2>
+      <p>Email : mbolafy.dev@gmail.com</p>
+      <p>WhatsApp : +261 34 077 2612</p>
+    </div>
   </div>
-</section>
 
-<footer>
-  © 2025 Mbola Fy Dev
-</footer>
+  <footer>
+    © 2026 - Portfolio Développeur Web
+  </footer>
 
 </div>
 
-<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 <script>
 const { createApp } = Vue;
 
 createApp({
-  data(){
-    return{
-      profile:{
-        name:"ANDRIATSIKETRAKARIVONINDRIAKA Mbola Fy",
-        title:"Développeur Web Fullstack Django & Laravel",
-        email:"mbolafy.dev@gmail.com",
-        github:"https://github.com/MbolafyDev"
-      },
-      parcours:[
-        {year:"2023-2025",title:"Diplôme Électricité & Plomberie",icon:"fa-solid fa-graduation-cap"},
-        {year:"2024-2025",title:"Autodidacte Django",icon:"fa-solid fa-code"},
-        {year:"2022-2024",title:"Autodidacte Laravel",icon:"fa-brands fa-laravel"}
+  data() {
+    return {
+      page: 'home',
+      menus: [
+        { key: 'home', label: 'Accueil', icon: 'fa-solid fa-house' },
+        { key: 'about', label: 'À propos', icon: 'fa-solid fa-user' },
+        { key: 'skills', label: 'Compétences', icon: 'fa-solid fa-code' },
+        { key: 'projects', label: 'Projets', icon: 'fa-solid fa-briefcase' },
+        { key: 'contact', label: 'Contact', icon: 'fa-solid fa-envelope' },
       ],
-      skills:[
-        {name:"HTML / CSS",value:90,animate:false},
-        {name:"JavaScript",value:80,animate:false},
-        {name:"Python / Django",value:85,animate:false},
-        {name:"PHP / Laravel",value:75,animate:false}
+      skills: [
+        { name: 'HTML / CSS / Bootstrap', icon: 'fa-brands fa-html5' },
+        { name: 'Vue.js', icon: 'fa-brands fa-vuejs' },
+        { name: 'Python / Django', icon: 'fa-brands fa-python' },
+        { name: 'Git / GitHub', icon: 'fa-brands fa-github' },
+        { name: 'UI / UX', icon: 'fa-solid fa-pen-nib' },
+        { name: 'Dev Fullstack', icon: 'fa-solid fa-layer-group' },
       ]
     }
-  },
-  mounted(){
-    const observer = new IntersectionObserver(entries=>{
-      entries.forEach(entry=>{
-        if(entry.isIntersecting){
-          entry.target.classList.add("show");
-          this.skills.forEach(s=>s.animate=true);
-        }
-      })
-    },{threshold:.2});
-
-    this.$refs.items.forEach(el => observer.observe(el));
   }
-}).mount("#app");
+}).mount('#app');
 </script>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
