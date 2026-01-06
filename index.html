@@ -18,7 +18,7 @@
     /* ===== GLOBAL ===== */
     body {
       background: #111827; /* Fond dark général */
-      color: #ffffff; /* Texte blanc */
+      color: #111827; /* Texte noir par défaut dans sections */
       font-family: 'Poppins', sans-serif;
       padding-top: 90px;
     }
@@ -42,8 +42,8 @@
       min-height: 80vh;
       padding: 60px 15px;
       animation: fade 0.5s ease-in-out;
-      background: #1f2937; /* Fond dark pour sections */
-      color: #ffffff;
+      background: #ffffff; /* Fond blanc pour sections */
+      color: #111827; /* Texte noir */
     }
     @keyframes fade {
       from { opacity: 0; transform: translateY(20px); }
@@ -58,24 +58,28 @@
       align-items: center;
     }
     .hero img {
-      width: 260px;
-      height: 260px;
+      width: 100%;
+      max-width: 260px;
+      height: auto;
+      aspect-ratio: 1/1;
       object-fit: cover;
       border-radius: 50%;
-      box-shadow: 0 15px 40px rgba(0,0,0,.5);
-      border: 5px solid #22c55e;
+      box-shadow: 0 15px 40px rgba(0,0,0,.2);
+      border: 5px solid #22c55e; /* vert clair */
+      margin: auto;
+      display: block;
     }
-    .hero h1 span { color: #22c55e; }
-    .hero p { color: #ffffff; }
+    .hero h1 span { color: #22c55e; } /* vert clair */
+    .hero p { color: #111827; } /* noir */
 
     /* ===== CARDS ===== */
     .card {
       border-radius: 15px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.5);
-      background-color: #1f2937;
-      color: #ffffff;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+      background-color: #f8fafc; /* blanc doux */
+      color: #111827;
     }
-    h1 span, .skill-card i, .timeline-badge { color: #22c55e; }
+    h1 span, .skill-card i, .timeline-badge { color: #22c55e; } /* vert clair */
 
     /* ===== SKILLS ===== */
     .skills {
@@ -88,28 +92,28 @@
       text-align: center;
       transition: transform 0.3s;
       border-radius: 12px;
-      background: #374151; /* Fond dark pour skill card */
-      color: #ffffff;
+      background: #e0f2fe; /* bleu clair */
+      color: #111827;
     }
     .skill-card:hover { transform: translateY(-5px); }
-    .skill-card i { font-size: 2rem; color: #22c55e; }
+    .skill-card i { font-size: 2rem; color: #22c55e; } /* vert clair */
 
     /* ===== TIMELINE ===== */
     .timeline-modern { display: flex; flex-direction: column; gap: 15px; }
     .timeline-item-modern {
       display: flex; align-items: flex-start;
-      background-color: #374151;
+      background-color: #f1f5f9; /* fond clair */
       padding: 15px 20px; border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
       transition: all 0.3s ease;
-      color: #ffffff;
+      color: #111827;
     }
-    .timeline-item-modern:hover { transform: translateY(-2px); box-shadow: 0 6px 12px rgba(0,0,0,0.7);}
+    .timeline-item-modern:hover { transform: translateY(-2px); box-shadow: 0 6px 12px rgba(0,0,0,0.15);}
     .timeline-badge {
       width: 50px; height: 50px; border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
       font-size: 1.3rem; margin-right: 15px;
-      background: #3b82f6; color: #111827;
+      background: #3b82f6; color: #ffffff; /* bleu clair */
       flex-shrink: 0;
     }
 
@@ -119,7 +123,7 @@
       text-align: center;
       padding: 20px;
       color: #ffffff;
-      border-top: 3px solid #22c55e;
+      border-top: 3px solid #22c55e; /* vert clair */
       margin-top: 40px;
       font-weight: bold;
     }
@@ -127,7 +131,7 @@
     /* ===== RESPONSIVE ===== */
     @media(max-width: 900px){
       .hero-grid { grid-template-columns: 1fr; text-align: center; }
-      .hero img { margin: auto; }
+      .hero img { margin: auto; width: 180px; height: 180px; }
     }
   </style>
 </head>
@@ -191,7 +195,6 @@
   <div class="container section" v-if="page==='experience'">
     <h2 class="mb-4 text-green">Parcours & Expériences</h2>
 
-    <!-- PARCOURS -->
     <h4 class="text-green">Parcours</h4>
     <div class="timeline-modern mb-4">
       <div class="timeline-item-modern" v-for="item in parcours" :key="item.title">
@@ -203,7 +206,6 @@
       </div>
     </div>
 
-    <!-- EXPERIENCES -->
     <h4 class="text-green">Expériences professionnelles</h4>
     <div class="timeline-modern">
       <div class="timeline-item-modern" v-for="item in experiences" :key="item.title">
